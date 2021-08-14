@@ -1,0 +1,384 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Fengx">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://example.com">
+    <!--SEO-->
+
+<meta name="keywords" content="数据结构" />
+
+
+<meta name="description" content="概述数据结构是为实现对计算机数据有效使用的各种数据组织形式，服务于各类计算机操作。不同的数据结构具有各自对应的适用场景，旨在降低各种算法计算的时间与空间复杂度，达到最佳的任务执行效率。
+分类线性..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    数据结构基础知识 |
+    
+    Fengx
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Fengx" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/banner2.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Fengx'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <h2>
+                戒骄戒躁
+            </h2>
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://example.com">
+                        Fengx</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa fa-home"></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/操作系统/"><i class="fa fa-book"></i>
+                                操作系统</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/网络/"><i class="fa fa-book"></i>
+                                网络</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/数据结构与算法/"><i class="fa fa-book"></i>
+                                数据结构与算法</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/设计模式/"><i class="fa fa-book"></i>
+                                设计模式</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/知识体系/"><i class="fa fa-code"></i>
+                                Java</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/数据库/"><i class="fa fa-table"></i>
+                                数据库</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa fa-history"></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="数据结构基础知识">
+            
+            数据结构基础知识
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-none-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2021/05/30</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>数据结构是为实现对计算机数据有效使用的各种数据组织形式，服务于各类计算机操作。不同的数据结构具有各自对应的适用场景，旨在降低各种算法计算的时间与空间复杂度，达到最佳的任务执行效率。</p>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><h3 id="线性数据结构（物理结构）"><a href="#线性数据结构（物理结构）" class="headerlink" title="线性数据结构（物理结构）"></a>线性数据结构（物理结构）</h3><p>数组(Array)、链表(Linked List)、栈(Stack)、队列(Queue)</p>
+<h3 id="非线性数据结构（逻辑结构）"><a href="#非线性数据结构（逻辑结构）" class="headerlink" title="非线性数据结构（逻辑结构）"></a>非线性数据结构（逻辑结构）</h3><p>树(Tree)、堆(Heap)、散列表(Hashing)、图(Graph)</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/5253e82f78c3e235799fe38bfab6f097.png"></p>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>数组是将相同类型的元素存储于连续内存空间的数据结构，其长度不可变。</p>
+<p>如下图所示，构建此数组需要在初始化时给定长度，并对数组每个索引元素赋值，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始化一个长度为 5 的数组 array</span></span><br><span class="line"><span class="keyword">int</span>[] array = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">5</span>];</span><br><span class="line"><span class="comment">// 元素赋值</span></span><br><span class="line">array[<span class="number">0</span>] = <span class="number">2</span>;</span><br><span class="line">array[<span class="number">1</span>] = <span class="number">3</span>;</span><br><span class="line">array[<span class="number">2</span>] = <span class="number">1</span>;</span><br><span class="line">array[<span class="number">3</span>] = <span class="number">0</span>;</span><br><span class="line">array[<span class="number">4</span>] = <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+<p>或者可以使用直接赋值的初始化方式，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] array = &#123;<span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">2</span>&#125;;</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/1c2abd5fc60ef2eb30058cbd9dcdcdf1.png"></p>
+<h3 id="可变数组"><a href="#可变数组" class="headerlink" title="可变数组"></a>可变数组</h3><p>可变数组是经常使用的数据结构，其基于数组和扩容机制实现，相比普通数组更加灵活。常用操作有：访问元素、添加元素、删除元素。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始化可变数组</span></span><br><span class="line">List&lt;Integer&gt; array = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 向尾部添加元素</span></span><br><span class="line">array.add(<span class="number">2</span>);</span><br><span class="line">array.add(<span class="number">3</span>);</span><br><span class="line">array.add(<span class="number">1</span>);</span><br><span class="line">array.add(<span class="number">0</span>);</span><br><span class="line">array.add(<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h2><p>链表以节点为单位，每个元素都是一个独立对象，在内存空间的存储是非连续的。链表的节点对象具有两个成员变量：<strong>「值 val」</strong>，<strong>「后继节点引用 next」</strong>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListNode</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> val;       <span class="comment">// 节点值</span></span><br><span class="line">    ListNode next; <span class="comment">// 后继节点引用</span></span><br><span class="line">    ListNode(<span class="keyword">int</span> x) &#123; val = x; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如下图所示，建立此链表需要实例化每个节点，并构建各节点的引用指向。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 实例化节点</span></span><br><span class="line">ListNode n1 = <span class="keyword">new</span> ListNode(<span class="number">4</span>); <span class="comment">// 节点 head</span></span><br><span class="line">ListNode n2 = <span class="keyword">new</span> ListNode(<span class="number">5</span>);</span><br><span class="line">ListNode n3 = <span class="keyword">new</span> ListNode(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 构建引用指向</span></span><br><span class="line">n1.next = n2;</span><br><span class="line">n2.next = n3;</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/81117006f63098c29cceb5938fdc3199.png"></p>
+<h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><p>栈是一种具有 <strong>「先入后出」</strong> 特点的抽象数据结构，可使用数组或链表实现。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br></pre></td></tr></table></figure>
+<p>如下图所示，通过常用操作 <strong>「入栈 push()」</strong>,<strong>「出栈 pop()」</strong>，展示了栈的先入后出特性。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">stack.push(<span class="number">1</span>); <span class="comment">// 元素 1 入栈</span></span><br><span class="line">stack.push(<span class="number">2</span>); <span class="comment">// 元素 2 入栈</span></span><br><span class="line">stack.pop(); <span class="comment">// 出栈 -&gt; 元素 2</span></span><br><span class="line">stack.pop(); <span class="comment">// 出栈 -&gt; 元素 1</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/fd87c8434c522a2ec0861e73acab9039.png"></p>
+<blockquote>
+<p>注意：通常情况下，不推荐使用 Java 的 Vector 以及其子类 Stack ，而一般将 LinkedList 作为栈来使用。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">LinkedList&lt;Integer&gt; stack = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">stack.addLast(<span class="number">1</span>);   <span class="comment">// 元素 1 入栈</span></span><br><span class="line">stack.addLast(<span class="number">2</span>);   <span class="comment">// 元素 2 入栈</span></span><br><span class="line">stack.removeLast(); <span class="comment">// 出栈 -&gt; 元素 2</span></span><br><span class="line">stack.removeLast(); <span class="comment">// 出栈 -&gt; 元素 1</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h2><p>队列是一种具有 <strong>「先入先出」</strong> 特点的抽象数据结构，可使用链表实现。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Queue&lt;Integer&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br></pre></td></tr></table></figure>
+<p>如下图所示，通过常用操作 <strong>「入队 push()」</strong>,<strong>「出队 pop()」</strong>，展示了队列的先入先出特性。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">queue.offer(<span class="number">1</span>); <span class="comment">// 元素 1 入队</span></span><br><span class="line">queue.offer(<span class="number">2</span>); <span class="comment">// 元素 2 入队</span></span><br><span class="line">queue.poll();   <span class="comment">// 出队 -&gt; 元素 1</span></span><br><span class="line">queue.poll();   <span class="comment">// 出队 -&gt; 元素 2</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/04adc6d2756e08fd67f9081a3cd194d9.png"></p>
+<h2 id="树"><a href="#树" class="headerlink" title="树"></a>树</h2><p>树是一种非线性数据结构，根据子节点数量可分为 <strong>「二叉树」</strong> 和 <strong>「多叉树」</strong>，最顶层的节点称为 <strong>「根节点 root」</strong>。以二叉树为例，每个节点包含三个成员变量：<strong>「值 val」</strong>、<strong>「左子节点 left」</strong>、<strong>「右子节点 right」</strong> 。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> val;        <span class="comment">// 节点值</span></span><br><span class="line">    TreeNode left;  <span class="comment">// 左子节点</span></span><br><span class="line">    TreeNode right; <span class="comment">// 右子节点</span></span><br><span class="line">    TreeNode(<span class="keyword">int</span> x) &#123; val = x; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如下图所示，建立此二叉树需要实例化每个节点，并构建各节点的引用指向。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始化节点</span></span><br><span class="line">TreeNode n1 = <span class="keyword">new</span> TreeNode(<span class="number">3</span>); <span class="comment">// 根节点 root</span></span><br><span class="line">TreeNode n2 = <span class="keyword">new</span> TreeNode(<span class="number">4</span>);</span><br><span class="line">TreeNode n3 = <span class="keyword">new</span> TreeNode(<span class="number">5</span>);</span><br><span class="line">TreeNode n4 = <span class="keyword">new</span> TreeNode(<span class="number">1</span>);</span><br><span class="line">TreeNode n5 = <span class="keyword">new</span> TreeNode(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 构建引用指向</span></span><br><span class="line">n1.left = n2;</span><br><span class="line">n1.right = n3;</span><br><span class="line">n2.left = n4;</span><br><span class="line">n2.right = n5;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/img_convert/03f6d9e00726a132eac1b662a4e8a5ef.png"></p>
+<h2 id="图"><a href="#图" class="headerlink" title="图"></a>图</h2><p>图是一种非线性数据结构，由 <strong>「节点（顶点）vertex」</strong> 和 <strong>「边 edge」</strong> 组成，每条边连接一对顶点。根据边的方向有无，图可分为 <strong>「有向图」</strong> 和 <strong>「无向图」</strong> 。</p>
+<p>如下图所示，此无向图的 顶点 和 边 集合分别为：</p>
+<ul>
+<li>顶点集合： vertices = {1, 2, 3, 4, 5}</li>
+<li>边集合： edges = {(1, 2), (1, 3), (1, 4), (1, 5), (2, 4), (3, 5), (4, 5)}</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/8bb2cee2e9db758ff3de1ace8a5fc848.png"></p>
+<p>表示图的方法通常有两种：</p>
+<p><strong>1、邻接矩阵</strong>： 使用数组 verticesvertices 存储顶点，邻接矩阵 edgesedges 存储边；edges[i][j] 代表节点 i + 1和节点 j + 1之间是否有边。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] vertices = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line"><span class="keyword">int</span>[][] edges = &#123;&#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>&#125;,</span><br><span class="line">                 &#123;<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>&#125;,</span><br><span class="line">                 &#123;<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>&#125;,</span><br><span class="line">                 &#123;<span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>&#125;,</span><br><span class="line">                 &#123;<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>&#125;&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>2、邻接表</strong>： 使用数组vertices存储顶点，邻接表edges存储边。 edges为一个二维容器，第一维 i 代表顶点索引，第二维 edges[i] 存储此顶点对应的边集和；例如 edges[0] = [1, 2, 3, 4]代表 vertices[0]的边集合为 [1, 2, 3, 4]。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] vertices = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line">List&lt;List&lt;Integer&gt;&gt; edges = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">List&lt;Integer&gt; edge_1 = <span class="keyword">new</span> ArrayList&lt;&gt;(Arrays.asList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>));</span><br><span class="line">List&lt;Integer&gt; edge_2 = <span class="keyword">new</span> ArrayList&lt;&gt;(Arrays.asList(<span class="number">0</span>, <span class="number">3</span>));</span><br><span class="line">List&lt;Integer&gt; edge_3 = <span class="keyword">new</span> ArrayList&lt;&gt;(Arrays.asList(<span class="number">0</span>, <span class="number">4</span>));</span><br><span class="line">List&lt;Integer&gt; edge_4 = <span class="keyword">new</span> ArrayList&lt;&gt;(Arrays.asList(<span class="number">0</span>, <span class="number">1</span>, <span class="number">4</span>));</span><br><span class="line">List&lt;Integer&gt; edge_5 = <span class="keyword">new</span> ArrayList&lt;&gt;(Arrays.asList(<span class="number">0</span>, <span class="number">2</span>, <span class="number">3</span>));</span><br><span class="line">edges.add(edge_1);</span><br><span class="line">edges.add(edge_2);</span><br><span class="line">edges.add(edge_3);</span><br><span class="line">edges.add(edge_4);</span><br><span class="line">edges.add(edge_5);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>邻接矩阵 VS 邻接表 ：</p>
+<p>邻接矩阵的大小只与节点数量有关，即N^2，其中N为节点数量。因此，当边数量明显少于节点数量时，使用邻接矩阵存储图会造成较大的内存浪费。因此，邻接表 适合存储稀疏图（顶点较多、边较少）；邻接矩阵适合存储稠密图（顶点较少、边较多）。</p>
+</blockquote>
+<h2 id="散列表"><a href="#散列表" class="headerlink" title="散列表"></a>散列表</h2><p>散列表是一种非线性数据结构，通过利用 Hash 函数将指定的 <strong>「键 key」</strong> 映射至对应的 <strong>「值 value」</strong> ，以实现高效的元素查找。</p>
+<blockquote>
+<p>设想一个简单场景：小力、小特、小扣的学号分别为 10001, 10002, 10003 。现需求从「姓名」查找「学号」。</p>
+</blockquote>
+<p>则可通过建立姓名为 key ，学号为 value 的散列表实现此需求，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始化散列表</span></span><br><span class="line">Map&lt;String, Integer&gt; dic = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加 key -&gt; value 键值对</span></span><br><span class="line">dic.put(<span class="string">&quot;小力&quot;</span>, <span class="number">10001</span>);</span><br><span class="line">dic.put(<span class="string">&quot;小特&quot;</span>, <span class="number">10002</span>);</span><br><span class="line">dic.put(<span class="string">&quot;小扣&quot;</span>, <span class="number">10003</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 从姓名查找学号</span></span><br><span class="line">dic.get(<span class="string">&quot;小力&quot;</span>); <span class="comment">// -&gt; 10001</span></span><br><span class="line">dic.get(<span class="string">&quot;小特&quot;</span>); <span class="comment">// -&gt; 10002</span></span><br><span class="line">dic.get(<span class="string">&quot;小扣&quot;</span>); <span class="comment">// -&gt; 10003</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/img_convert/f2adf1e5cc3f127acd432dc34b7b2fbe.png"></p>
+<p><strong>自行设计 Hash 函数：</strong></p>
+<blockquote>
+<p>假设需求：从「学号」查找「姓名」。</p>
+</blockquote>
+<p>将三人的姓名存储至以下数组中，则各姓名在数组中的索引分别为 0, 1, 2。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String[] names = &#123; <span class="string">&quot;小力&quot;</span>, <span class="string">&quot;小特&quot;</span>, <span class="string">&quot;小扣&quot;</span> &#125;;</span><br></pre></td></tr></table></figure>
+<p>此时，我们构造一个简单的Hash函数（%为取余符号），公式和封装函数如下所示：                                    </p>
+<blockquote>
+<p>hash(key) = (key - 1) % 10000</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">hash</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> index = (id - <span class="number">1</span>) % <span class="number">10000</span>;</span><br><span class="line">    <span class="keyword">return</span> index;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>则我们构建了以学号为 key 、姓名对应的数组索引为 value 的散列表。利用此 Hash 函数，则可在 O(1) 时间复杂度下通过学号查找到对应姓名，即：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">names[hash(<span class="number">10001</span>)] <span class="comment">// 小力</span></span><br><span class="line">names[hash(<span class="number">10002</span>)] <span class="comment">// 小特</span></span><br><span class="line">names[hash(<span class="number">10003</span>)] <span class="comment">// 小扣</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/img_convert/f14962de706019d06d6dee9430e19e67.png"></p>
+<p>以上设计只适用于此示例，实际的 Hash 函数需保证低碰撞率、<br>高鲁棒性(健壮性)等，以适用于各类数据和场景。</p>
+<h2 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h2><p>堆是一种基于 <strong>「完全二叉树」</strong> 的数据结构，可使用数组实现。以堆为原理的排序算法称为 <strong>「堆排序」</strong> ，基于堆实现的数据结构为 <strong>「优先队列」</strong> 。堆分为 <strong>「大顶堆」</strong> 和 <strong>「小顶堆」</strong> ，大（小）顶堆：任意节点的值不大于（小于）其父节点的值。</p>
+<blockquote>
+<p>完全二叉树定义： 设二叉树深度为 k ，若二叉树除第 k 层外的其它各层（第 1 至 k−1 层）的节点达到最大个数，且处于第 k 层的节点都连续集中在最左边，则称此二叉树为完全二叉树。</p>
+</blockquote>
+<p>如下图所示，为包含 1, 4, 2, 6, 8 元素的小顶堆。将堆（完全二叉树）中的结点按层编号，即可映射到右边的数组存储形式。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/a803f4a953df9c1e5a243883c1ae7c94.png"></p>
+<p>通过使用「优先队列」的「压入 push()」和「弹出pop()」操作，即可完成堆排序，实现代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始化小顶堆</span></span><br><span class="line">Queue&lt;Integer&gt; heap = <span class="keyword">new</span> PriorityQueue&lt;&gt;();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 元素入堆</span></span><br><span class="line">heap.add(<span class="number">1</span>);</span><br><span class="line">heap.add(<span class="number">4</span>);</span><br><span class="line">heap.add(<span class="number">2</span>);</span><br><span class="line">heap.add(<span class="number">6</span>);</span><br><span class="line">heap.add(<span class="number">8</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 元素出堆（从小到大）</span></span><br><span class="line">heap.poll(); <span class="comment">// -&gt; 1</span></span><br><span class="line">heap.poll(); <span class="comment">// -&gt; 2</span></span><br><span class="line">heap.poll(); <span class="comment">// -&gt; 4</span></span><br><span class="line">heap.poll(); <span class="comment">// -&gt; 6</span></span><br><span class="line">heap.poll(); <span class="comment">// -&gt; 8</span></span><br></pre></td></tr></table></figure>
+    </div>
+    
+    <div class="reward" ontouchstart>
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            <span class="reward-type">
+                <img class="alipay" src="/img/alipay.jpg"><b>支付宝打赏</b>
+            </span>
+            
+            
+            <span class="reward-type">
+                <img class="wechat" src="/img/wechat.jpg"><b>微信打赏</b>
+            </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">
+        谢谢~
+    </p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+    <a href="/2021/05/03/java1/" class="next-post btn btn-default" title='Java基础（复习整理）'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            Java基础（复习整理）</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E7%B1%BB"><span class="toc-text">分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88%E7%89%A9%E7%90%86%E7%BB%93%E6%9E%84%EF%BC%89"><span class="toc-text">线性数据结构（物理结构）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E7%BA%BF%E6%80%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84%EF%BC%89"><span class="toc-text">非线性数据结构（逻辑结构）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84"><span class="toc-text">数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E5%8F%98%E6%95%B0%E7%BB%84"><span class="toc-text">可变数组</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8"><span class="toc-text">链表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88"><span class="toc-text">栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%9F%E5%88%97"><span class="toc-text">队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%91"><span class="toc-text">树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE"><span class="toc-text">图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%A3%E5%88%97%E8%A1%A8"><span class="toc-text">散列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A0%86"><span class="toc-text">堆</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2021
+                    <img src="/img/icp.png"><a href="//beian.miit.gov.cn/" target="_blank" rel="nofollow">
+                        桂ICP备20004986号</a>
+                    
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>

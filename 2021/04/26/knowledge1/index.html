@@ -1,0 +1,856 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Fengx">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://example.com">
+    <!--SEO-->
+
+<meta name="keywords" content="Java,知识体系" />
+
+
+<meta name="description" content="纸上得来终觉浅，绝知此事要躬行
+看书看的起劲是什么时候，能回想到自己写代码，终于知道为什么要这么写，有种茅塞顿开的感觉，那才叫爽。
+基础重点(必须扎实)Java语言
+语言基础 《Java核心技术..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    Java后端知识体系 |
+    
+    Fengx
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Fengx" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/banner2.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Fengx'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <h2>
+                戒骄戒躁
+            </h2>
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://example.com">
+                        Fengx</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa fa-home"></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/操作系统/"><i class="fa fa-book"></i>
+                                操作系统</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/网络/"><i class="fa fa-book"></i>
+                                网络</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/数据结构与算法/"><i class="fa fa-book"></i>
+                                数据结构与算法</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/设计模式/"><i class="fa fa-book"></i>
+                                设计模式</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/知识体系/"><i class="fa fa-code"></i>
+                                Java</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/数据库/"><i class="fa fa-table"></i>
+                                数据库</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa fa-history"></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Java后端知识体系">
+            
+            Java后端知识体系
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/">知识体系</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-none-link" href="/tags/Java/" rel="tag">Java</a> <a class="tag-none-link" href="/tags/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/" rel="tag">知识体系</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2021/04/26</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p><strong>纸上得来终觉浅，绝知此事要躬行</strong></p>
+<p><strong>看书看的起劲是什么时候，能回想到自己写代码，终于知道为什么要这么写，有种茅塞顿开的感觉，那才叫爽。</strong></p>
+<h2 id="基础重点-必须扎实"><a href="#基础重点-必须扎实" class="headerlink" title="基础重点(必须扎实)"></a>基础重点(必须扎实)</h2><h3 id="Java语言"><a href="#Java语言" class="headerlink" title="Java语言"></a>Java语言</h3><ul>
+<li><p>语言基础 <strong>《Java核心技术》</strong></p>
+<ul>
+<li>基础语法</li>
+<li>面向对象</li>
+<li>常用API</li>
+<li>异常处理</li>
+<li>集合</li>
+<li>IO</li>
+<li>多线程</li>
+<li>网络编程</li>
+<li>泛型</li>
+<li>反射</li>
+<li>注解</li>
+</ul>
+</li>
+<li><p>JVM <strong>《深入理解Java虚拟机》</strong></p>
+<ul>
+<li><p>类加载机制</p>
+<ul>
+<li>双亲委托</li>
+</ul>
+</li>
+<li><p>字节码执行机制</p>
+</li>
+<li><p>JVM内存模型</p>
+<ul>
+<li>堆区</li>
+<li>虚拟机栈</li>
+<li>方法区</li>
+</ul>
+</li>
+<li><p>GC垃圾回收</p>
+</li>
+<li><p>JVM性能监控与故障定位</p>
+</li>
+<li><p>JVM调优</p>
+</li>
+</ul>
+</li>
+<li><p>多线程、锁、并发 <strong>1:《Java并发编程的艺术》、2:《Java并发编程实战》</strong></p>
+<ul>
+<li><p>并发编程基础</p>
+</li>
+<li><p>线程池</p>
+</li>
+<li><p>锁</p>
+<ul>
+<li>乐观锁、悲观锁</li>
+<li>互斥锁、共享锁</li>
+<li>可重入锁、偏向锁</li>
+<li>轻量级锁、CAS与自旋锁</li>
+</ul>
+</li>
+<li><p>并发容器</p>
+</li>
+<li><p>原子类</p>
+</li>
+<li><p>JUC并发工具类</p>
+</li>
+</ul>
+</li>
+<li><p>网络编程</p>
+<ul>
+<li><p>学习路径</p>
+<ul>
+<li>Socket API  + 多线程 + 网络模型/IO模型 + IO复用</li>
+<li>Netty</li>
+</ul>
+</li>
+<li><p>核心点</p>
+<ul>
+<li>进程间通信方式：信号量、管道、共享内存、socket 等</li>
+<li>多线程编程：互斥锁、条件变量、读写锁、线程池等</li>
+<li>五大 IO 模型：同步、异步、阻塞、非阻塞、信号驱动</li>
+<li>高性能 IO 两种模式：Reactor 和 Proactor</li>
+<li>IO 复用机制：epoll、select、poll（破解 C10K 问题的利器）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Java源码</p>
+</li>
+</ul>
+<h3 id="数据库-SQL"><a href="#数据库-SQL" class="headerlink" title="数据库/SQL"></a>数据库/SQL</h3><ul>
+<li><p><strong>《SQL必知必会》、《高性能MySQL》</strong></p>
+</li>
+<li><p>SQL语句</p>
+<ul>
+<li><p>手写SQL</p>
+<ul>
+<li>联表</li>
+<li>聚合</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>SQL语句优化</p>
+</li>
+<li><p>事务、隔离级别</p>
+</li>
+<li><p>索引</p>
+</li>
+<li><p>锁</p>
+</li>
+</ul>
+<h3 id="数据结构与算法"><a href="#数据结构与算法" class="headerlink" title="数据结构与算法"></a>数据结构与算法</h3><ul>
+<li><p><strong>《漫画算法》、《算法》</strong></p>
+</li>
+<li><p>数据结构</p>
+<ul>
+<li>字符串</li>
+<li>数组</li>
+<li>链表</li>
+<li>栈</li>
+<li>队列</li>
+<li>二叉树</li>
+<li>堆</li>
+<li>哈希</li>
+</ul>
+</li>
+<li><p>算法</p>
+<ul>
+<li>十大排序</li>
+<li>查找、二分</li>
+<li>贪心</li>
+<li>分治</li>
+<li>动态规划</li>
+<li>回溯</li>
+</ul>
+</li>
+</ul>
+<h3 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h3><ul>
+<li><strong>《重学Java设计模式》</strong></li>
+<li>单例</li>
+<li>工厂</li>
+<li>代理</li>
+<li>策略</li>
+<li>模板方法</li>
+<li>观察者</li>
+<li>适配器</li>
+<li>责任链</li>
+<li>建造者</li>
+<li>。。。。</li>
+</ul>
+<h3 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h3><ul>
+<li><p><strong>《计算机网络：自顶向下方法》</strong></p>
+</li>
+<li><p>HTTP、TCP、IP、ICMP、UDP、DNS、ARP</p>
+</li>
+<li><p>IP地址、MAC地址、OSI七层模型（或者 TCP/IP 五层模型）</p>
+</li>
+<li><p>HTTPS安全相关的：数字签名、数字证书、TLS</p>
+</li>
+<li><p>常见网络攻击：局域网ARP泛洪、DDoS、TCP SYN Flood、XSS等</p>
+</li>
+<li><p>TCP协议（最重要）</p>
+<ul>
+<li><p>TCP协议</p>
+<ul>
+<li>三次握手、四次挥手</li>
+<li>状态转换</li>
+<li>TCP状态中TIME_WAIT</li>
+<li>拥塞控制</li>
+<li>快速重传、慢启动</li>
+</ul>
+</li>
+<li><p>问题</p>
+<ul>
+<li>TCP 如何实现可靠传输的（画外音：如何基于 UDP 实现可靠传输）</li>
+<li>TCP 连接建立为什么不是两次握手（画外音：三次握手的充分必要性说明）</li>
+<li>TIME_WAIT 的存在解决了什么问题，等待时间为什么是 2 MSL</li>
+</ul>
+</li>
+<li><p>核心</p>
+<ul>
+<li>可靠传输 + 高效传输（流量控制和窗口管理）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>HTTP、HTTPS</p>
+<ul>
+<li>从 URL 输入到页面展现到底发生什么</li>
+</ul>
+</li>
+<li><p><strong>学习方法</strong></p>
+<ul>
+<li><p>学习抓住一条主线</p>
+<ul>
+<li> 一个数据包是如何发送出去的</li>
+</ul>
+</li>
+<li><p>带着问题去思考为什么这么做</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h3><ul>
+<li><p><strong>《现代操作系统》</strong></p>
+</li>
+<li><p>进程管理</p>
+</li>
+<li><p>并发、同步互斥、锁</p>
+</li>
+<li><p>内存管理</p>
+</li>
+<li><p>文件系统</p>
+</li>
+<li><p>重点</p>
+<ul>
+<li><p>OS四大模块的理论知识</p>
+<ul>
+<li>进程与线程管理</li>
+<li>内存管理</li>
+<li>IO与文件系统</li>
+<li>设备管理</li>
+</ul>
+</li>
+<li><p>了解Linux内核部分实现原理</p>
+<ul>
+<li>内存管理</li>
+<li>进程管理</li>
+<li>虚拟文件系统</li>
+</ul>
+</li>
+<li><p>与编程最密切</p>
+<ul>
+<li>内存</li>
+<li>进程</li>
+<li>IO</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>认知</p>
+<ul>
+<li>操作系统由哪些构成</li>
+<li>进程的状态、切换、调度</li>
+<li>进程间通信方式（共享内存、管道、消息）</li>
+<li>进程和线程的区别</li>
+<li>线程的实现方式（一对一、多对一等）</li>
+<li>互斥与同步（信号量、管程、锁）</li>
+<li>死锁检测与避免</li>
+<li>并发经典的问题：读者写者、哲学家就餐问题</li>
+<li>为什么需要虚拟内存，MMU 具体如何做地址转换的</li>
+<li>内存为什么分段、分页</li>
+<li>页面置换算法</li>
+<li>文件系统是如何组织的</li>
+<li>虚拟文件系统（VFS）是如何抽象的</li>
+<li>。。。。</li>
+</ul>
+</li>
+</ul>
+<h2 id="应用框架"><a href="#应用框架" class="headerlink" title="应用框架"></a>应用框架</h2><h3 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h3><ul>
+<li><p>JSP、Servlet</p>
+</li>
+<li><p>Spring家族</p>
+<ul>
+<li><p>Spring</p>
+<ul>
+<li>IOC</li>
+<li>AOP</li>
+</ul>
+</li>
+<li><p>Spring MVC</p>
+</li>
+<li><p>MyBatis</p>
+</li>
+<li><p>SSM</p>
+<ul>
+<li>打war包</li>
+<li>Tomcat运行</li>
+</ul>
+</li>
+<li><p>Spring Boot</p>
+<ul>
+<li><p>打jar包</p>
+<ul>
+<li><p>内嵌Tomcat</p>
+<ul>
+<li>微服务架构</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>知识点</p>
+<ul>
+<li><p>自动配置、开箱即用</p>
+</li>
+<li><p>整合Web</p>
+</li>
+<li><p>整合数据库（事务问题）</p>
+</li>
+<li><p>整合权限</p>
+<ul>
+<li>Shiro</li>
+<li>SpringSecurity</li>
+</ul>
+</li>
+<li><p>各种中间件</p>
+<ul>
+<li><p>缓存</p>
+</li>
+<li><p>MQ</p>
+</li>
+<li><p>RPC框架</p>
+<ul>
+<li>Dubbo</li>
+</ul>
+</li>
+<li><p>NIO框架</p>
+<ul>
+<li>Netty</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Spring Cloud</p>
+<ul>
+<li><p>Netflix</p>
+<ul>
+<li><p>Eureka</p>
+<ul>
+<li>服务治理组件，包括服务端的注册中心和客户端的服务发现机制。</li>
+</ul>
+</li>
+<li><p>Ribbon</p>
+<ul>
+<li>负载均衡的服务调用组件，具有多种负载均衡调用策略。</li>
+</ul>
+</li>
+<li><p>Hystrix</p>
+<ul>
+<li>服务容错组件，实现了断路器模式，为依赖服务的出错和延迟提供了容错能力。</li>
+</ul>
+</li>
+<li><p>Feign</p>
+<ul>
+<li>基于Ribbon和Hystrix的声明式服务调用组件。</li>
+</ul>
+</li>
+<li><p>Zuul</p>
+<ul>
+<li>API 网关服务，过滤、安全、监控、限流、路由。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Alibaba </p>
+<ul>
+<li><p>Nacos</p>
+<ul>
+<li>阿里巴巴开源产品，一个更易于构建云原生应用的动态服务发现、配置管理和服务管理平台。</li>
+</ul>
+</li>
+<li><p>Sentinel</p>
+<ul>
+<li>面向分布式服务架构的轻量级流量控制产品，把流量作为切入点，从流量控制、熔断降级、系统负载保护等多个维度保护服务的稳定性。</li>
+</ul>
+</li>
+<li><p>RocketMQ</p>
+<ul>
+<li>一款开源的分布式消息系统，基于高可用分布式集群技术，提供低延时的、高可靠的消息发布与订阅服务。</li>
+</ul>
+</li>
+<li><p>Dubbo</p>
+<ul>
+<li>Apache Dubbo 是一款高性能 Java RPC 框架，用于实现服务通信。</li>
+</ul>
+</li>
+<li><p>Seata</p>
+<ul>
+<li>阿里巴巴开源产品，一个易于使用的高性能微服务分布式事务解决方案。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Config</p>
+<ul>
+<li>分布式配置中心。配置管理工具，支持使用 Git 存储配置内容，支持应用配置的外部化存储，支持客户端配置信息刷新、加解密配置内容等。</li>
+</ul>
+</li>
+<li><p>Bus</p>
+<ul>
+<li>事件、消息总线，用于在集群（例如，配置变化事件）中传播状态变化，可与 Spring Cloud Config 联合实现热部署。</li>
+</ul>
+</li>
+<li><p>Consul</p>
+<ul>
+<li>服务注册和配置管理中心。</li>
+</ul>
+</li>
+<li><p>Security</p>
+<ul>
+<li>安全工具包，对Zuul代理中的负载均衡OAuth2客户端及登录认证进行支持。</li>
+</ul>
+</li>
+<li><p>Sleuth</p>
+<ul>
+<li>SpringCloud应用程序的分布式请求链路跟踪，支持使用Zipkin、HTrace和基于日志（例如ELK）的跟踪。</li>
+</ul>
+</li>
+<li><p>Stream</p>
+<ul>
+<li>轻量级事件驱动微服务框架，可以使用简单的声明式模型来发送及接收消息，主要实现为Apache Kafka及RabbitMQ。</li>
+</ul>
+</li>
+<li><p>Task</p>
+<ul>
+<li>用于快速构建短暂、有限数据处理任务的微服务框架，用于向应用中添加功能性和非功能性的特性。</li>
+</ul>
+</li>
+<li><p>Zookeeper</p>
+<ul>
+<li>服务注册中心。</li>
+</ul>
+</li>
+<li><p>Gateway（可替代 Zuul）</p>
+<ul>
+<li>Spring Cloud Gateway 是 Spring 官方基于 Spring 5.0，Spring Boot 2.0 和 Project Reactor 等技术开发的网关，Spring Cloud Gateway 旨在为微服务架构提供一种简单而有效的统一的 API 路由管理方式。Spring Cloud Gateway 作为 Spring Cloud 生态系中的网关，目标是替代 Netflix Zuul，其不仅提供统一的路由方式，并且基于 Filter 链的方式提供了网关基本的功能，例如：安全，监控/埋点，和限流等。</li>
+</ul>
+</li>
+<li><p>OpenFeign（可替代 Feign）</p>
+<ul>
+<li>OpenFeign 是 Spring Cloud 在 Feign 的基础上支持了 Spring MVC 的注解，如 @RequesMapping等等。OpenFeign 的 @FeignClient 可以解析 SpringMVC 的 @RequestMapping 注解下的接口，并通过动态代理的方式产生实现类，实现类中做负载均衡并调用其他服务。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>项目经验</p>
+<ul>
+<li>总结</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>中间件</p>
+<ul>
+<li><p>缓存</p>
+<ul>
+<li><p>Redis</p>
+<ul>
+<li>5大数据类型</li>
+<li>事务</li>
+<li>消息通知</li>
+<li>管道</li>
+<li>持久化</li>
+<li>集群</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>消息</p>
+<ul>
+<li>RabbitMQ</li>
+<li>RocketMQ</li>
+<li>Kafka</li>
+</ul>
+</li>
+<li><p>搜索</p>
+<ul>
+<li>ElasticSearch</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h3><ul>
+<li><p>基础套餐</p>
+<ul>
+<li><p>三大件</p>
+<ul>
+<li>HTML</li>
+<li>CSS</li>
+<li>JavaScript</li>
+</ul>
+</li>
+<li><p>基础库</p>
+<ul>
+<li>jQuery</li>
+<li>Ajax</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>模板框架</p>
+<ul>
+<li>JSP</li>
+<li>Thymeleaf</li>
+<li>FreeMaker</li>
+</ul>
+</li>
+<li><p>组件化框架</p>
+<ul>
+<li>Node</li>
+<li>VUE</li>
+<li>React</li>
+<li>Angular</li>
+</ul>
+</li>
+</ul>
+<h2 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h2><h3 id="集成开发环境"><a href="#集成开发环境" class="headerlink" title="集成开发环境"></a>集成开发环境</h3><ul>
+<li>Eclipse</li>
+<li>IDEA</li>
+<li>VSCode</li>
+</ul>
+<h3 id="Linux系统"><a href="#Linux系统" class="headerlink" title="Linux系统"></a>Linux系统</h3><ul>
+<li>Linux常用命令</li>
+<li>基本Shell脚本</li>
+</ul>
+<h3 id="代码管理工具"><a href="#代码管理工具" class="headerlink" title="代码管理工具"></a>代码管理工具</h3><ul>
+<li><p>Git</p>
+<ul>
+<li>Git命令和使用</li>
+</ul>
+</li>
+<li><p>SVN</p>
+</li>
+</ul>
+<h3 id="项目管理-构建工具"><a href="#项目管理-构建工具" class="headerlink" title="项目管理/构建工具"></a>项目管理/构建工具</h3><ul>
+<li>Maven</li>
+<li>Gradle</li>
+</ul>
+<h2 id="应用运维"><a href="#应用运维" class="headerlink" title="应用运维"></a>应用运维</h2><h3 id="Web服务器"><a href="#Web服务器" class="headerlink" title="Web服务器"></a>Web服务器</h3><ul>
+<li>Nginx</li>
+</ul>
+<h3 id="应用服务器"><a href="#应用服务器" class="headerlink" title="应用服务器"></a>应用服务器</h3><ul>
+<li>Tomcat</li>
+</ul>
+<h3 id="容器技术"><a href="#容器技术" class="headerlink" title="容器技术"></a>容器技术</h3><ul>
+<li>Docker</li>
+<li>Kubernetes(K8S)<ul>
+<li>管理运维容器</li>
+</ul>
+</li>
+</ul>
+<h3 id="持续集成、持续发布"><a href="#持续集成、持续发布" class="headerlink" title="持续集成、持续发布"></a>持续集成、持续发布</h3><ul>
+<li>Jenkins</li>
+</ul>
+<h3 id="代码质量检测"><a href="#代码质量检测" class="headerlink" title="代码质量检测"></a>代码质量检测</h3><ul>
+<li>Sonar</li>
+</ul>
+<h3 id="日志收集、分析"><a href="#日志收集、分析" class="headerlink" title="日志收集、分析"></a>日志收集、分析</h3><ul>
+<li>ELK</li>
+</ul>
+<h3 id="CDN加速"><a href="#CDN加速" class="headerlink" title="CDN加速"></a>CDN加速</h3>
+    </div>
+    
+    <div class="reward" ontouchstart>
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            <span class="reward-type">
+                <img class="alipay" src="/img/alipay.jpg"><b>支付宝打赏</b>
+            </span>
+            
+            
+            <span class="reward-type">
+                <img class="wechat" src="/img/wechat.jpg"><b>微信打赏</b>
+            </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">
+        谢谢~
+    </p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2021/05/03/java1/" class="pre-post btn btn-default" title='Java基础（复习整理）'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            Java基础（复习整理）</span>
+    </a>
+    
+    
+    <a href="/2021/01/24/database1/" class="next-post btn btn-default" title='MySQL建表规约整理-《Java开发手册》'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            MySQL建表规约整理-《Java开发手册》</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E9%87%8D%E7%82%B9-%E5%BF%85%E9%A1%BB%E6%89%8E%E5%AE%9E"><span class="toc-text">基础重点(必须扎实)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Java%E8%AF%AD%E8%A8%80"><span class="toc-text">Java语言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93-SQL"><span class="toc-text">数据库&#x2F;SQL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95"><span class="toc-text">数据结构与算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-text">设计模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C"><span class="toc-text">计算机网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-text">操作系统</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E6%A1%86%E6%9E%B6"><span class="toc-text">应用框架</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF"><span class="toc-text">后端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF"><span class="toc-text">前端</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7"><span class="toc-text">开发工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E6%88%90%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="toc-text">集成开发环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux%E7%B3%BB%E7%BB%9F"><span class="toc-text">Linux系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7"><span class="toc-text">代码管理工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86-%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7"><span class="toc-text">项目管理&#x2F;构建工具</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E8%BF%90%E7%BB%B4"><span class="toc-text">应用运维</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Web%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-text">Web服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-text">应用服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF"><span class="toc-text">容器技术</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E3%80%81%E6%8C%81%E7%BB%AD%E5%8F%91%E5%B8%83"><span class="toc-text">持续集成、持续发布</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F%E6%A3%80%E6%B5%8B"><span class="toc-text">代码质量检测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86%E3%80%81%E5%88%86%E6%9E%90"><span class="toc-text">日志收集、分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CDN%E5%8A%A0%E9%80%9F"><span class="toc-text">CDN加速</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2021
+                    <img src="/img/icp.png"><a href="//beian.miit.gov.cn/" target="_blank" rel="nofollow">
+                        桂ICP备20004986号</a>
+                    
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,355 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Fengx">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://example.com">
+    <!--SEO-->
+
+<meta name="keywords" content="数据库,MySQL" />
+
+
+<meta name="description" content="建库1、库名与应用名称尽量一致
+建表1、表名、字段名必须使用小写字母或数字，禁止出现数字开头，禁止两个下划线中间只出现数字。数据库字段名的修改代价很大，因为无法进行预发布，所以字段名称需要慎重考..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    MySQL建表规约整理-《Java开发手册》 |
+    
+    Fengx
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Fengx" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/banner2.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Fengx'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <h2>
+                戒骄戒躁
+            </h2>
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://example.com">
+                        Fengx</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa fa-home"></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/操作系统/"><i class="fa fa-book"></i>
+                                操作系统</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/网络/"><i class="fa fa-book"></i>
+                                网络</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/数据结构与算法/"><i class="fa fa-book"></i>
+                                数据结构与算法</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/设计模式/"><i class="fa fa-book"></i>
+                                设计模式</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/知识体系/"><i class="fa fa-code"></i>
+                                Java</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/数据库/"><i class="fa fa-table"></i>
+                                数据库</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa fa-history"></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="MySQL建表规约整理-《Java开发手册》">
+            
+            MySQL建表规约整理-《Java开发手册》
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-none-link" href="/tags/MySQL/" rel="tag">MySQL</a> <a class="tag-none-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2021/01/24</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h1 id="建库"><a href="#建库" class="headerlink" title="建库"></a>建库</h1><p><strong>1、库名与应用名称尽量一致</strong></p>
+<h1 id="建表"><a href="#建表" class="headerlink" title="建表"></a>建表</h1><p><strong>1、表名、字段名必须使用小写字母或数字，禁止出现数字开头，禁止两个下划线中间只出现数字。数据库字段名的修改代价很大，因为无法进行预发布，所以字段名称需要慎重考虑。</strong></p>
+<blockquote>
+<p>说明：MySQL 在 Windows下不区分大小写，但在 Linux 下默认是区分大小写。因此，数据库名、表名、<br>字段名，都不允许出现任何大写字母，避免节外生枝。</p>
+</blockquote>
+<ul>
+<li>正例：aliyun_admin，rdc_config，level3_name</li>
+<li>反例：AliyunAdmin，rdcConfig，level_3_name</li>
+</ul>
+<p><strong>2、表名不使用复数名词。</strong></p>
+<blockquote>
+<p>说明：表名应该仅仅表示表里面的实体内容，不应该表示实体数量，对应于DO类名也是单数形式，符合表达习惯。</p>
+</blockquote>
+<p><strong>3、表的命名最好是遵循“业务名称_表的作用”。</strong></p>
+<ul>
+<li>正例：alipay_task / force_project / trade_config</li>
+</ul>
+<h1 id="建字段"><a href="#建字段" class="headerlink" title="建字段"></a>建字段</h1><blockquote>
+<p>合适的字符存储长度，不但节约数据库表空间、节约索引存储，更重要的是提升检索速度。</p>
+</blockquote>
+<p><strong>1、数据表必备三字段：id, create_time, update_time。</strong></p>
+<blockquote>
+<p>说明：其中 id 必为主键，类型为 bigint unsigned、单表时自增、步长为 1。create_time, update_time<br>的类型均为 datetime 类型，前者现在时表示主动式创建，后者过去分词表示被动式更新。</p>
+</blockquote>
+<h2 id="是与否类型字段"><a href="#是与否类型字段" class="headerlink" title="是与否类型字段"></a>是与否类型字段</h2><p><strong>1、表达是与否概念的字段，必须使用 is_xxx 的方式命名，数据类型是 unsigned tinyint（1 表示是，0 表示否）。</strong></p>
+<blockquote>
+<p>说明：任何字段如果为非负数，必须是unsigned。</p>
+</blockquote>
+<blockquote>
+<p>注意：POJO类中的任何布尔类型的变量，都不要加 is 前缀，所以，需要在<resultMap>设置从 is_xxx 到Xxx的映射关系。数据库表示是与否的值，使用 tinyint类型，坚持is_xxx的命名方式是为了明确其取值含义与取值范围。</p>
+</blockquote>
+<ul>
+<li>正例：表达逻辑删除的字段名 is_deleted，1 表示删除，0 表示未删除。</li>
+</ul>
+<h2 id="普通字段"><a href="#普通字段" class="headerlink" title="普通字段"></a>普通字段</h2><p><strong>1、禁用保留字，如desc、range、match、delayed 等，请参考 MySQL 官方保留字。</strong></p>
+<p><strong>2、如果存储的字符串长度几乎相等，使用char 定长字符串类型。</strong></p>
+<h2 id="索引字段"><a href="#索引字段" class="headerlink" title="索引字段"></a>索引字段</h2><p><strong>1、主键索引名为 pk_字段名；唯一索引名为 uk_字段名；普通索引名则为 idx_字段名。</strong></p>
+<blockquote>
+<p>说明：pk_ 即 primary key；uk_ 即 unique key；idx_ 即 index 的简称</p>
+</blockquote>
+<h2 id="数字字段"><a href="#数字字段" class="headerlink" title="数字字段"></a>数字字段</h2><p><strong>1、小数类型为 decimal，禁止使用 float 和 double。</strong></p>
+<blockquote>
+<p>说明：在存储的时候，float 和 double<br>都存在精度损失的问题，很可能在比较值的时候，得到不正确的结果。如果存储的数据范围超过 decimal 的范围，建议将数据拆成整数和小数并分开存储。</p>
+</blockquote>
+<h2 id="长字段"><a href="#长字段" class="headerlink" title="长字段"></a>长字段</h2><p><strong>1、varchar是可变长字符串，不预先分配存储空间，长度不要超过5000，如果存储长度大于此值，定义字段类型为text，独立出来一张表，用主键来对应，避免影响其它字段索引效率。</strong></p>
+<h2 id="改字段"><a href="#改字段" class="headerlink" title="改字段"></a>改字段</h2><p><strong>1、如果修改字段含义或对字段表示的状态追加时，需要及时更新字段注释。</strong></p>
+<h2 id="冗余字段"><a href="#冗余字段" class="headerlink" title="冗余字段"></a>冗余字段</h2><p><strong>1、字段允许适当冗余，以提高查询性能，但必须考虑数据一致。冗余字段应遵循</strong></p>
+<ul>
+<li>不是频繁修改的字段。</li>
+<li>不是唯一索引的字段。</li>
+<li>不是 varchar 超长字段，更不能是text字段。</li>
+</ul>
+<blockquote>
+<p>正例：各业务线经常冗余存储商品名称，避免查询时需要调用 IC 服务获取</p>
+</blockquote>
+<h1 id="分库分表"><a href="#分库分表" class="headerlink" title="分库分表"></a>分库分表</h1><p><strong>1、单表行数超过 500 万行或者单表容量超过 2GB，才推荐进行分库分表。</strong></p>
+<blockquote>
+<p>说明：如果预计三年后的数据量根本达不到这个级别，请不要在创建表时就分库分表。</p>
+</blockquote>
+
+    </div>
+    
+    <div class="reward" ontouchstart>
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            <span class="reward-type">
+                <img class="alipay" src="/img/alipay.jpg"><b>支付宝打赏</b>
+            </span>
+            
+            
+            <span class="reward-type">
+                <img class="wechat" src="/img/wechat.jpg"><b>微信打赏</b>
+            </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">
+        谢谢~
+    </p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2021/04/26/knowledge1/" class="pre-post btn btn-default" title='Java后端知识体系'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            Java后端知识体系</span>
+    </a>
+    
+    
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BB%BA%E5%BA%93"><span class="toc-text">建库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BB%BA%E8%A1%A8"><span class="toc-text">建表</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BB%BA%E5%AD%97%E6%AE%B5"><span class="toc-text">建字段</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%98%AF%E4%B8%8E%E5%90%A6%E7%B1%BB%E5%9E%8B%E5%AD%97%E6%AE%B5"><span class="toc-text">是与否类型字段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E5%AD%97%E6%AE%B5"><span class="toc-text">普通字段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E5%AD%97%E6%AE%B5"><span class="toc-text">索引字段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E5%AD%97%E6%AE%B5"><span class="toc-text">数字字段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%95%BF%E5%AD%97%E6%AE%B5"><span class="toc-text">长字段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%B9%E5%AD%97%E6%AE%B5"><span class="toc-text">改字段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%97%E4%BD%99%E5%AD%97%E6%AE%B5"><span class="toc-text">冗余字段</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8"><span class="toc-text">分库分表</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2021
+                    <img src="/img/icp.png"><a href="//beian.miit.gov.cn/" target="_blank" rel="nofollow">
+                        桂ICP备20004986号</a>
+                    
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>
