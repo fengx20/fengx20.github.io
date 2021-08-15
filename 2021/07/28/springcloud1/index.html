@@ -1,0 +1,544 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Fengx">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://example.com">
+    <!--SEO-->
+
+<meta name="keywords" content="Spring Cloud" />
+
+
+<meta name="description" content="SpringCloud整体架构概览什么是SpringCloud目标协调任何服务，简化分布式系统开发。
+简介构建分布式系统不应该是复杂的，SpringCloud对常见的分布式系统模式提供了简单易用..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    Spring Cloud （一）概述 |
+    
+    Fengx
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Fengx" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/banner2.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Fengx'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <h2>
+                戒骄戒躁
+            </h2>
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://example.com">
+                        Fengx</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa fa-home"></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/操作系统/"><i class="fa fa-book"></i>
+                                操作系统</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/网络/"><i class="fa fa-book"></i>
+                                网络</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/数据结构与算法/"><i class="fa fa-book"></i>
+                                数据结构与算法</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/设计模式/"><i class="fa fa-book"></i>
+                                设计模式</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/知识体系/"><i class="fa fa-code"></i>
+                                Java</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/数据库/"><i class="fa fa-table"></i>
+                                数据库</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa fa-history"></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Spring Cloud （一）概述">
+            
+            Spring Cloud （一）概述
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/Spring-Cloud/">Spring Cloud</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-none-link" href="/tags/Spring-Cloud/" rel="tag">Spring Cloud</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2021/07/28</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h1 id="SpringCloud整体架构概览"><a href="#SpringCloud整体架构概览" class="headerlink" title="SpringCloud整体架构概览"></a>SpringCloud整体架构概览</h1><h2 id="什么是SpringCloud"><a href="#什么是SpringCloud" class="headerlink" title="什么是SpringCloud"></a>什么是SpringCloud</h2><h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>协调任何服务，简化分布式系统开发。</p>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>构建分布式系统不应该是复杂的，SpringCloud对常见的分布式系统模式提供了简单易用的编程模型，帮助开发者构建弹性、可靠、协调的应用程序。<br>SpringCloud是在SpringBoot的基础上构建的，使开发者可以轻松入门并快速提高工作效率。<br>SpringCloud为开发人员提供了快速构建分布式系统架构的工具，例如配置管理，服务发现，断路器，智能路由，微代理，控制总线，一次性令牌，全局锁定，领导选举，分布式会话，集群状态等。 </p>
+<h2 id="整体架构"><a href="#整体架构" class="headerlink" title="整体架构"></a>整体架构</h2><p><img src="http://www.macrozheng.com/images/springcloud_arch.png" alt="来自Spring官网"></p>
+<h2 id="SpringCloud的版本关系"><a href="#SpringCloud的版本关系" class="headerlink" title="SpringCloud的版本关系"></a>SpringCloud的版本关系</h2><p>SpringCloud是一个由许多子项目组成的综合项目，各子项目有不同的发布节奏。<br>为了管理SpringCloud与各子项目的版本依赖关系，发布了一个清单，其中包括了某个SpringCloud版本对应的子项目版本。<br>为了避免SpringCloud版本号与子项目版本号混淆，SpringCloud版本采用了名称而非版本号的命名，这些版本的名字采用了伦敦地铁站的名字，根据字母表的顺序来对应版本时间顺序，例如Angel是第一个版本, Brixton是第二个版本。<br>当SpringCloud的发布内容积累到临界点或者一个重大BUG被解决后，会发布一个”service releases”版本，简称SRX版本，比如Greenwich.SR2就是SpringCloud发布的Greenwich版本的第2个SRX版本。</p>
+<h3 id="SpringCloud和SpringBoot版本对应关系"><a href="#SpringCloud和SpringBoot版本对应关系" class="headerlink" title="SpringCloud和SpringBoot版本对应关系"></a>SpringCloud和SpringBoot版本对应关系</h3><table>
+<thead>
+<tr>
+<th>SpringCloud Version</th>
+<th>SpringBoot Version</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Hoxton</td>
+<td>2.2.x</td>
+</tr>
+<tr>
+<td>Greenwich</td>
+<td>2.1.x</td>
+</tr>
+<tr>
+<td>Finchley</td>
+<td>2.0.x</td>
+</tr>
+<tr>
+<td>Edgware</td>
+<td>1.5.x</td>
+</tr>
+<tr>
+<td>Dalston</td>
+<td>1.5.x</td>
+</tr>
+</tbody></table>
+<h3 id="SpringCloud和各子项目版本对应关系"><a href="#SpringCloud和各子项目版本对应关系" class="headerlink" title="SpringCloud和各子项目版本对应关系"></a>SpringCloud和各子项目版本对应关系</h3><table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Edgware.SR6</th>
+<th>Greenwich.SR2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>spring-cloud-bus</td>
+<td>1.3.4.RELEASE</td>
+<td>2.1.2.RELEASE</td>
+</tr>
+<tr>
+<td>spring-cloud-commons</td>
+<td>1.3.6.RELEASE</td>
+<td>2.1.2.RELEASE</td>
+</tr>
+<tr>
+<td>spring-cloud-config</td>
+<td>1.4.7.RELEASE</td>
+<td>2.1.3.RELEASE</td>
+</tr>
+<tr>
+<td>spring-cloud-netflix</td>
+<td>1.4.7.RELEASE</td>
+<td>2.1.2.RELEASE</td>
+</tr>
+<tr>
+<td>spring-cloud-security</td>
+<td>1.2.4.RELEASE</td>
+<td>2.1.3.RELEASE</td>
+</tr>
+<tr>
+<td>spring-cloud-consul</td>
+<td>1.3.6.RELEASE</td>
+<td>2.1.2.RELEASE</td>
+</tr>
+<tr>
+<td>spring-cloud-sleuth</td>
+<td>1.3.6.RELEASE</td>
+<td>2.1.1.RELEASE</td>
+</tr>
+<tr>
+<td>spring-cloud-stream</td>
+<td>Ditmars.SR5</td>
+<td>Fishtown.SR3</td>
+</tr>
+<tr>
+<td>spring-cloud-zookeeper</td>
+<td>1.2.3.RELEASE</td>
+<td>2.1.2.RELEASE</td>
+</tr>
+<tr>
+<td>spring-boot</td>
+<td>1.5.21.RELEASE</td>
+<td>2.1.5.RELEASE</td>
+</tr>
+<tr>
+<td>spring-cloud-task</td>
+<td>1.2.4.RELEASE</td>
+<td>2.1.2.RELEASE</td>
+</tr>
+<tr>
+<td>spring-cloud-gateway</td>
+<td>1.0.3.RELEASE</td>
+<td>2.1.2.RELEASE</td>
+</tr>
+<tr>
+<td>spring-cloud-openfeign</td>
+<td>暂无</td>
+<td>2.1.2.RELEASE</td>
+</tr>
+</tbody></table>
+<p><strong>注意：Greenwich版本是基于SpringBoot 2.1.x版本构建的，不适用于1.5.x版本。随着2019年8月SpringBoot 1.5.x版本停止维护，Edgware版本也将停止维护。</strong></p>
+<h2 id="SpringCloud子项目简介"><a href="#SpringCloud子项目简介" class="headerlink" title="SpringCloud子项目简介"></a>SpringCloud子项目简介</h2><h3 id="Spring-Cloud-Config"><a href="#Spring-Cloud-Config" class="headerlink" title="Spring Cloud Config"></a>Spring Cloud Config</h3><p>集中配置管理工具，分布式系统中统一的外部配置管理，默认使用Git来存储配置，可以支持客户端配置的刷新及加密、解密操作。</p>
+<h3 id="Spring-Cloud-Netflix"><a href="#Spring-Cloud-Netflix" class="headerlink" title="Spring Cloud Netflix"></a>Spring Cloud Netflix</h3><p>Netflix OSS 开源组件集成，包括Eureka、Hystrix、Ribbon、Feign、Zuul等核心组件。</p>
+<ul>
+<li>Eureka：服务治理组件，包括服务端的注册中心和客户端的服务发现机制；</li>
+<li>Ribbon：负载均衡的服务调用组件，具有多种负载均衡调用策略；</li>
+<li>Hystrix：服务容错组件，实现了断路器模式，为依赖服务的出错和延迟提供了容错能力；</li>
+<li>Feign：基于Ribbon和Hystrix的声明式服务调用组件；</li>
+<li>Zuul：API网关组件，对请求提供路由及过滤功能。</li>
+</ul>
+<h3 id="Spring-Cloud-Bus"><a href="#Spring-Cloud-Bus" class="headerlink" title="Spring Cloud Bus"></a>Spring Cloud Bus</h3><p>用于传播集群状态变化的消息总线，使用轻量级消息代理链接分布式系统中的节点，可以用来动态刷新集群中的服务配置。</p>
+<h3 id="Spring-Cloud-Consul"><a href="#Spring-Cloud-Consul" class="headerlink" title="Spring Cloud Consul"></a>Spring Cloud Consul</h3><p>基于Hashicorp Consul的服务治理组件。</p>
+<h3 id="Spring-Cloud-Security"><a href="#Spring-Cloud-Security" class="headerlink" title="Spring Cloud Security"></a>Spring Cloud Security</h3><p>安全工具包，对Zuul代理中的负载均衡OAuth2客户端及登录认证进行支持。</p>
+<h3 id="Spring-Cloud-Sleuth"><a href="#Spring-Cloud-Sleuth" class="headerlink" title="Spring Cloud Sleuth"></a>Spring Cloud Sleuth</h3><p>SpringCloud应用程序的分布式请求链路跟踪，支持使用Zipkin、HTrace和基于日志（例如ELK）的跟踪。</p>
+<h3 id="Spring-Cloud-Stream"><a href="#Spring-Cloud-Stream" class="headerlink" title="Spring Cloud Stream"></a>Spring Cloud Stream</h3><p>轻量级事件驱动微服务框架，可以使用简单的声明式模型来发送及接收消息，主要实现为Apache Kafka及RabbitMQ。</p>
+<h3 id="Spring-Cloud-Task"><a href="#Spring-Cloud-Task" class="headerlink" title="Spring Cloud Task"></a>Spring Cloud Task</h3><p>用于快速构建短暂、有限数据处理任务的微服务框架，用于向应用中添加功能性和非功能性的特性。</p>
+<h3 id="Spring-Cloud-Zookeeper"><a href="#Spring-Cloud-Zookeeper" class="headerlink" title="Spring Cloud Zookeeper"></a>Spring Cloud Zookeeper</h3><p>基于Apache Zookeeper的服务治理组件。</p>
+<h3 id="Spring-Cloud-Gateway"><a href="#Spring-Cloud-Gateway" class="headerlink" title="Spring Cloud Gateway"></a>Spring Cloud Gateway</h3><p>API网关组件，对请求提供路由及过滤功能。</p>
+<h3 id="Spring-Cloud-OpenFeign"><a href="#Spring-Cloud-OpenFeign" class="headerlink" title="Spring Cloud OpenFeign"></a>Spring Cloud OpenFeign</h3><p>基于Ribbon和Hystrix的声明式服务调用组件，可以动态创建基于Spring MVC注解的接口实现用于服务调用，在SpringCloud 2.0中已经取代Feign成为了一等公民。</p>
+<h1 id="Spring-Cloud-Alibaba概述"><a href="#Spring-Cloud-Alibaba概述" class="headerlink" title="Spring Cloud Alibaba概述"></a>Spring Cloud Alibaba概述</h1><blockquote>
+<p>Spring Cloud Alibaba 致力于提供微服务开发的一站式解决方案。此项目包含开发分布式应用微服务的必需组件，方便开发者通过 Spring Cloud 编程模型轻松使用这些组件来开发分布式应用服务。</p>
+<p>依托 Spring Cloud Alibaba，您只需要添加一些注解和少量配置，就可以将 Spring Cloud 应用接入阿里微服务解决方案，通过阿里中间件来迅速搭建分布式应用系统。</p>
+</blockquote>
+<p>Github:<a target="_blank" rel="noopener" href="https://github.com/alibaba/spring-cloud-alibaba">https://github.com/alibaba/spring-cloud-alibaba</a></p>
+<h1 id="SpringCloud-Alibaba-组件简介"><a href="#SpringCloud-Alibaba-组件简介" class="headerlink" title="SpringCloud Alibaba 组件简介"></a>SpringCloud Alibaba 组件简介</h1><p><strong>Spring Cloud的几大痛点</strong></p>
+<ul>
+<li>部分组件停止维护和更新，有问题也不易解决</li>
+<li>部分环境搭建起来比较复杂，没有非常友好的可视化界面</li>
+<li>配置相对来说复杂，需要较高的学习成本</li>
+</ul>
+<p><strong>Spring Cloud Alibaba的优势</strong></p>
+<ul>
+<li>阿里经历过了时间的考验</li>
+<li>设计合理</li>
+<li>拥有不错的可视化界面，方便运维监控和排查问题</li>
+<li>环境搭建和配置简单，学习成本低</li>
+</ul>
+<p><strong>SpringCloud Alibaba技术的搭配方案</strong></p>
+<table>
+<thead>
+<tr>
+<th>描述</th>
+<th>Spring Cloud</th>
+<th>Spring Cloud Alibaba</th>
+<th>组合选用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>服务发现组件</td>
+<td>Eureka（停止维护）服务发现组件</td>
+<td>Nacos 注册中心</td>
+<td>Spring Cloud Alibaba - Nacos</td>
+</tr>
+<tr>
+<td>配置中心组件</td>
+<td>Spring Cloud Config 配置中心</td>
+<td>Nacos 配置中心</td>
+<td>Spring Cloud Alibaba - Nacos</td>
+</tr>
+<tr>
+<td>断路保护组件</td>
+<td>Hystrix 断路保护</td>
+<td>Sentinel 服务容错</td>
+<td>Spring Cloud Alibaba - Sentinel</td>
+</tr>
+<tr>
+<td>链路追踪组件</td>
+<td>Sleuth 调用链监控</td>
+<td>/</td>
+<td>Spring Cloud - Sleuth</td>
+</tr>
+<tr>
+<td>负载均衡组件</td>
+<td>Ribbon</td>
+<td>/</td>
+<td>Spring Cloud - Ribbon</td>
+</tr>
+<tr>
+<td>远程调用组件</td>
+<td>OpenFeign （HTTP+JSON）</td>
+<td>Dubbo（RPC框架）</td>
+<td>Spring Cloud - OpenFeign</td>
+</tr>
+<tr>
+<td>分布式事务</td>
+<td>/</td>
+<td>Seata 分布式事务</td>
+<td>Spring Cloud Alibaba - Seata</td>
+</tr>
+<tr>
+<td>API 网关</td>
+<td>Gateway</td>
+<td>/</td>
+<td>Spring Cloud - Gateway</td>
+</tr>
+</tbody></table>
+<h2 id="Spring-Cloud-Alibaba版本"><a href="#Spring-Cloud-Alibaba版本" class="headerlink" title="Spring Cloud Alibaba版本"></a>Spring Cloud Alibaba版本</h2><p>项目的版本号格式为 x.x.x 的形式，其中 x 的数值类型为数字，从 0 开始取值，且不限于 0~9 这个范围。项目处于孵化器阶段时，第一位版本号固定使用 0，即版本号为 0.x.x 的格式。</p>
+<p>由于 Spring Boot 1 和 Spring Boot 2 在 Actuator 模块的接口和注解有很大的变更，且 spring-cloud-commons 从 1.x.x 版本升级到 2.0.0 版本也有较大的变更，因此阿里采取跟 SpringBoot 版本号一致的版本:</p>
+<ul>
+<li>1.5.x 版本适用于 Spring Boot 1.5.x</li>
+<li>2.0.x 版本适用于 Spring Boot 2.0.x</li>
+<li>2.1.x 版本适用于 Spring Boot 2.1.x</li>
+<li>2.2.x 版本适用于 Spring Boot 2.2.x</li>
+</ul>
+<p>Spring Cloud Alibaba 版本和Spring Cloud 和Spring Boot 版本兼容性列表</p>
+<table>
+<thead>
+<tr>
+<th>Spring Cloud 版本</th>
+<th>Spring Cloud Alibaba 版本</th>
+<th>Spring Boot 版本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Spring Cloud Hoxton.SR3</td>
+<td>2.2.x.RELEASE</td>
+<td>2.2.x.RELEASE</td>
+</tr>
+<tr>
+<td>Spring Cloud Greenwich</td>
+<td>2.1.x.RELEASE</td>
+<td>2.1.x.RELEASE</td>
+</tr>
+<tr>
+<td>Spring Cloud Finchley</td>
+<td>2.0.x.RELEASE</td>
+<td>2.0.x.RELEASE</td>
+</tr>
+<tr>
+<td>Spring Cloud Edgware</td>
+<td>1.5.x.RELEASE</td>
+<td>1.5.x.RELEASE</td>
+</tr>
+</tbody></table>
+<p>我们采用<code>Spring Cloud Hoxton.SR3</code>, <code>Spring Cloud Alibaba 2.2.0.RELEASE</code>, <code>Spring Boot 2.2.6 RELEASE</code></p>
+<p>Spring Cloud Alibaba依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencyManagement</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--  Spring Cloud Alibaba 依赖  --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-alibaba-dependencies<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2.0.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">type</span>&gt;</span>pom<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>import<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencyManagement</span>&gt;</span></span><br></pre></td></tr></table></figure>
+    </div>
+    
+    <div class="reward" ontouchstart>
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            <span class="reward-type">
+                <img class="alipay" src="/img/alipay.jpg"><b>支付宝打赏</b>
+            </span>
+            
+            
+            <span class="reward-type">
+                <img class="wechat" src="/img/wechat.jpg"><b>微信打赏</b>
+            </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">
+        谢谢~
+    </p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2021/08/02/architecture1/" class="pre-post btn btn-default" title='架构学习整理（一）'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            架构学习整理（一）</span>
+    </a>
+    
+    
+    <a href="/2021/05/30/csbase1/" class="next-post btn btn-default" title='数据结构基础知识'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            数据结构基础知识</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SpringCloud%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E6%A6%82%E8%A7%88"><span class="toc-text">SpringCloud整体架构概览</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFSpringCloud"><span class="toc-text">什么是SpringCloud</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87"><span class="toc-text">目标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-text">简介</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84"><span class="toc-text">整体架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SpringCloud%E7%9A%84%E7%89%88%E6%9C%AC%E5%85%B3%E7%B3%BB"><span class="toc-text">SpringCloud的版本关系</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SpringCloud%E5%92%8CSpringBoot%E7%89%88%E6%9C%AC%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB"><span class="toc-text">SpringCloud和SpringBoot版本对应关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SpringCloud%E5%92%8C%E5%90%84%E5%AD%90%E9%A1%B9%E7%9B%AE%E7%89%88%E6%9C%AC%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB"><span class="toc-text">SpringCloud和各子项目版本对应关系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SpringCloud%E5%AD%90%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B"><span class="toc-text">SpringCloud子项目简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-Cloud-Config"><span class="toc-text">Spring Cloud Config</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-Cloud-Netflix"><span class="toc-text">Spring Cloud Netflix</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-Cloud-Bus"><span class="toc-text">Spring Cloud Bus</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-Cloud-Consul"><span class="toc-text">Spring Cloud Consul</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-Cloud-Security"><span class="toc-text">Spring Cloud Security</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-Cloud-Sleuth"><span class="toc-text">Spring Cloud Sleuth</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-Cloud-Stream"><span class="toc-text">Spring Cloud Stream</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-Cloud-Task"><span class="toc-text">Spring Cloud Task</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-Cloud-Zookeeper"><span class="toc-text">Spring Cloud Zookeeper</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-Cloud-Gateway"><span class="toc-text">Spring Cloud Gateway</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-Cloud-OpenFeign"><span class="toc-text">Spring Cloud OpenFeign</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Spring-Cloud-Alibaba%E6%A6%82%E8%BF%B0"><span class="toc-text">Spring Cloud Alibaba概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SpringCloud-Alibaba-%E7%BB%84%E4%BB%B6%E7%AE%80%E4%BB%8B"><span class="toc-text">SpringCloud Alibaba 组件简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring-Cloud-Alibaba%E7%89%88%E6%9C%AC"><span class="toc-text">Spring Cloud Alibaba版本</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2021
+                    <img src="/img/icp.png"><a href="//beian.miit.gov.cn/" target="_blank" rel="nofollow">
+                        桂ICP备20004986号</a>
+                    
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>
