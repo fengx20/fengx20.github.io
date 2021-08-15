@@ -1,0 +1,519 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Fengx">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://example.com">
+    <!--SEO-->
+
+<meta name="keywords" content="数据库,SQL" />
+
+
+<meta name="description" content="前言唉，说是Java开发，其实写的最多的还是SQL，搞得我有点迷啊，我这是SQL工程师吧。。。。不说了，还是写一篇备忘录吧，一方面巩固，一方面方便自己查询，没有的就查漏补缺，后面可能会根据不同数..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    开发必备----SQL |
+    
+    Fengx
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Fengx" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/banner2.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Fengx'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <h2>
+                戒骄戒躁
+            </h2>
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://example.com">
+                        Fengx</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa fa-home"></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/操作系统/"><i class="fa fa-book"></i>
+                                操作系统</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/网络/"><i class="fa fa-book"></i>
+                                网络</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/数据结构与算法/"><i class="fa fa-book"></i>
+                                数据结构与算法</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/设计模式/"><i class="fa fa-book"></i>
+                                设计模式</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/知识体系/"><i class="fa fa-code"></i>
+                                Java</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/数据库/"><i class="fa fa-table"></i>
+                                数据库</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa fa-history"></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="开发必备----SQL">
+            
+            开发必备----SQL
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-none-link" href="/tags/SQL/" rel="tag">SQL</a> <a class="tag-none-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2020/12/01</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>唉，说是Java开发，其实写的最多的还是SQL，搞得我有点迷啊，我这是SQL工程师吧。。。。不说了，还是写一篇备忘录吧，一方面巩固，一方面方便自己查询，没有的就查漏补缺，后面可能会根据不同数据库，场景，性能来添油加醋。。。<br><img src="https://img-blog.csdnimg.cn/20201130165554620.jpeg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3NjUxMjUy,size_16,color_FFFFFF,t_70#pic_center" width=300px /></p>
+<h3 id="说明一下"><a href="#说明一下" class="headerlink" title="说明一下"></a>说明一下</h3><p><font color="red">这个SQL备忘录主要使用于MySQL，其他数据库可能略有不同，后面会总结一下。。。</p></p>
+<h3 id="DDL（数据定义语言）"><a href="#DDL（数据定义语言）" class="headerlink" title="DDL（数据定义语言）"></a>DDL（数据定义语言）</h3><h6 id="创建新数据库"><a href="#创建新数据库" class="headerlink" title="创建新数据库"></a>创建新数据库</h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE [数据库名]</span><br></pre></td></tr></table></figure>
+
+<h6 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> DATABASE [数据库名]</span><br></pre></td></tr></table></figure>
+
+<p><font color="red">同理，创建和删除表一样写法，DATABASE 改成 TABLE</font></p>
+<h6 id="创建索引"><a href="#创建索引" class="headerlink" title="创建索引"></a>创建索引</h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> INDEX [索引名] <span class="keyword">ON</span> [表名]</span><br></pre></td></tr></table></figure>
+
+<h6 id="删除索引"><a href="#删除索引" class="headerlink" title="删除索引"></a>删除索引</h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> INDEX [索引名]</span><br></pre></td></tr></table></figure>
+
+<h3 id="DML（数据操作语言）"><a href="#DML（数据操作语言）" class="headerlink" title="DML（数据操作语言）"></a><font color="red">DML（数据操作语言）</font></h3><h4 id="insert（插入）"><a href="#insert（插入）" class="headerlink" title="insert（插入）"></a>insert（插入）</h4><h6 id="单条插入"><a href="#单条插入" class="headerlink" title="单条插入"></a>单条插入</h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> students (class_id,name,gender,score) <span class="keyword">values</span> (<span class="number">2</span>,<span class="string">&#x27;大牛&#x27;</span>,<span class="string">&#x27;M&#x27;</span>,<span class="number">80</span>);</span><br></pre></td></tr></table></figure>
+
+<h6 id="多条插入"><a href="#多条插入" class="headerlink" title="多条插入"></a>多条插入</h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> students (class_id,name,gender,score) <span class="keyword">values</span> </span><br><span class="line">(<span class="number">2</span>,<span class="string">&#x27;大牛&#x27;</span>,<span class="string">&#x27;M&#x27;</span>,<span class="number">80</span>),</span><br><span class="line">(<span class="number">3</span>,<span class="string">&#x27;小牛&#x27;</span>,<span class="string">&#x27;S&#x27;</span>,<span class="number">30</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="delete（删除）"><a href="#delete（删除）" class="headerlink" title="delete（删除）"></a>delete（删除）</h4><h6 id="单条"><a href="#单条" class="headerlink" title="单条"></a>单条</h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> students <span class="keyword">where</span> id <span class="operator">=</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<h6 id="多条"><a href="#多条" class="headerlink" title="多条"></a>多条</h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> students <span class="keyword">where</span> id <span class="operator">&gt;=</span> <span class="number">5</span> <span class="keyword">and</span> id <span class="operator">&lt;=</span> <span class="number">7</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="更新（update）"><a href="#更新（update）" class="headerlink" title="更新（update）"></a>更新（update）</h4><h6 id="单条-1"><a href="#单条-1" class="headerlink" title="单条"></a>单条</h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update students <span class="keyword">set</span> name <span class="operator">=</span> <span class="string">&#x27;大牛&#x27;</span>,score <span class="operator">=</span> <span class="number">66</span> <span class="keyword">where</span> id <span class="operator">=</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<h6 id="多条-1"><a href="#多条-1" class="headerlink" title="多条"></a>多条</h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update students <span class="keyword">set</span> name <span class="operator">=</span> <span class="string">&#x27;小牛&#x27;</span>,score <span class="operator">=</span> <span class="number">77</span> <span class="keyword">where</span> id <span class="operator">&gt;=</span> <span class="number">5</span> <span class="keyword">and</span> id <span class="operator">&lt;=</span> <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+
+<h6 id="使用表达式"><a href="#使用表达式" class="headerlink" title="使用表达式"></a>使用表达式</h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update students <span class="keyword">set</span> score <span class="operator">=</span> score <span class="operator">+</span> <span class="number">10</span> <span class="keyword">where</span> id <span class="operator">&lt;=</span> <span class="number">20</span>;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><font color = "red">咳咳，很快啊，重点来了</font></p>
+<h3 id="查询（select）"><a href="#查询（select）" class="headerlink" title="查询（select）"></a>查询（select）</h3><h4 id="select常见完整语句"><a href="#select常见完整语句" class="headerlink" title="select常见完整语句"></a>select常见完整语句</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> [目标列名] <span class="keyword">from</span> [数据表名][<span class="keyword">where</span> 行条件表达式][<span class="keyword">group</span> <span class="keyword">by</span> [列名]][<span class="keyword">having</span> [组表达式]][<span class="keyword">order</span> <span class="keyword">by</span> [列名] [<span class="keyword">asc</span><span class="operator">/</span><span class="keyword">desc</span>]]</span><br></pre></td></tr></table></figure>
+
+<h4 id="经典查询"><a href="#经典查询" class="headerlink" title="经典查询"></a>经典查询</h4><h5 id="查询所有"><a href="#查询所有" class="headerlink" title="查询所有"></a>查询所有</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> students;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><font color="red">实际项目中尽量不要使用，影响性能</font></p>
+</blockquote>
+<h5 id="查询单行、多行"><a href="#查询单行、多行" class="headerlink" title="查询单行、多行"></a>查询单行、多行</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> name,class_id <span class="keyword">from</span> students <span class="keyword">where</span> id <span class="operator">=</span> <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> name,class_id <span class="keyword">from</span> students <span class="keyword">where</span> id <span class="operator">&gt;</span> <span class="number">10</span> <span class="keyword">and</span> id <span class="operator">&lt;</span> <span class="number">20</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="投影查询"><a href="#投影查询" class="headerlink" title="投影查询"></a>投影查询</h4><blockquote>
+<p>让结果集仅包含指定列<br>SELECT 列1, 列2, 列3 FROM …<br>例子：</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> id, score, name <span class="keyword">FROM</span> students;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>起别名<br>SELECT 列1 别名1, 列2 别名2, 列3 别名3 FROM …;<br>可以给每一列起个别名，结果集的列名可以与原表的列名不同<br>例子：</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> id stu_id, score points, name stu_name <span class="keyword">FROM</span> students;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>WHERE</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> id, score points, name <span class="keyword">FROM</span> students <span class="keyword">WHERE</span> gender <span class="operator">=</span> <span class="string">&#x27;M&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h4><blockquote>
+<p>ORDER BY</p>
+</blockquote>
+<h5 id="ASC升序"><a href="#ASC升序" class="headerlink" title="ASC升序"></a>ASC升序</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> id, name, gender, score <span class="keyword">FROM</span> students <span class="keyword">ORDER</span> <span class="keyword">BY</span> score;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>默认的排序规则是ASC：“升序”，即从小到大，ASC可以省略，即 ORDER BY score ASC = ORDER BY score</p>
+</blockquote>
+<h5 id="DECS降序"><a href="#DECS降序" class="headerlink" title="DECS降序"></a>DECS降序</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> id, name, gender, score <span class="keyword">FROM</span> students <span class="keyword">ORDER</span> <span class="keyword">BY</span> score <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
+
+<h5 id="多排序"><a href="#多排序" class="headerlink" title="多排序"></a>多排序</h5><blockquote>
+<p>当score列有相同的数据，要进一步排序，可以继续添加列名，例如使用ORDER BY score DESC, gender表示先按score列倒序，如果有相同分数的，再按gender列排序：</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> id, name, gender, score <span class="keyword">FROM</span> students <span class="keyword">ORDER</span> <span class="keyword">BY</span> score <span class="keyword">DESC</span>, gender;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>WHERE<br>如果有WHERE子句，ORDER BY子句要放到WHERE子句后面,先查出来在排序</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> id, name, gender, scoreFROM studentsWHERE class_id <span class="operator">=</span> <span class="number">1</span><span class="keyword">ORDER</span> <span class="keyword">BY</span> score <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="分页查询"><a href="#分页查询" class="headerlink" title="分页查询"></a>分页查询</h4><blockquote>
+<p>LIMIT <M> OFFSET <N></p>
+</blockquote>
+<blockquote>
+<p><strong>或 LIMIT N,M （例：limit 0,20：第0条记录开始，拿20条数据）</strong></p>
+</blockquote>
+<blockquote>
+<p>实现：<br>要实现分页功能，实际上就是从结果集中显示第1到100条记录作为第1页，显示第101到200条记录作为第2页，以此类推。<br>先进行排序：</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> id, name, gender, score <span class="keyword">FROM</span> students <span class="keyword">ORDER</span> <span class="keyword">BY</span> score <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>现在，我们把结果集分页，每页3条记录。要获取第1页的记录，可以使用LIMIT 3 OFFSET 0：</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> id, name, gender, scoreFROM studentsORDER <span class="keyword">BY</span> score DESCLIMIT <span class="number">3</span> <span class="keyword">OFFSET</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>上述查询LIMIT 3 OFFSET 0表示，对结果集从0号记录开始，最多取3条。注意SQL记录集的索引从0开始。<br>如果要查询第2页，那么我们只需要“跳过”头3条记录，也就是对结果集从3号记录开始查询，把OFFSET设定为3：</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> id, name, gender, scoreFROM studentsORDER <span class="keyword">BY</span> score DESCLIMIT <span class="number">3</span> <span class="keyword">OFFSET</span> <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>LIMIT 3表示的意思是“最多3条记录”。</p>
+</blockquote>
+<blockquote>
+<p>OFFSET超过了查询的最大数量并不会报错，而是得到一个空的结果集。<br>OFFSET是可选的，如果只写LIMIT 15，那么相当于LIMIT 15 OFFSET 0。<br>在MySQL中，LIMIT 15 OFFSET 30还可以简写成LIMIT 30, 15。</p>
+</blockquote>
+<blockquote>
+<p>使用LIMIT <M> OFFSET <N>分页时，随着N越来越大，查询效率也会越来越低。</p>
+</blockquote>
+<h4 id="聚合查询"><a href="#聚合查询" class="headerlink" title="聚合查询"></a>聚合查询</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">FROM</span> students;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>COUNT((星号))表示查询所有列的行数，要注意聚合的计算结果虽然是一个数字，但查询的结果仍然是一个二维表，只是这个二维表只有一行一列，并且列名是COUNT((星号))。</p>
+</blockquote>
+<blockquote>
+<p>通常，使用聚合查询时，我们应该给列名设置一个别名，便于处理结果：</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>) num <span class="keyword">FROM</span> students;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>WHERE</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>) boys <span class="keyword">FROM</span> students <span class="keyword">WHERE</span> gender <span class="operator">=</span> <span class="string">&#x27;M&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>除了COUNT()函数外，SQL还提供了如下聚合函数：</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">函数 说明SUM 计算某一列的合计值，该列必须为数值类型AVG 计算某一列的平均值，该列必须为数值类型MAX 计算某一列的最大值MIN 计算某一列的最小值</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>MAX()和MIN()函数并不限于数值类型。如果是字符类型，MAX()和MIN()会返回排序最后和排序最前的字符。</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">AVG</span>(score) average <span class="keyword">FROM</span> students <span class="keyword">WHERE</span> gender <span class="operator">=</span> <span class="string">&#x27;M&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果聚合查询的WHERE条件没有匹配到任何行，COUNT()会返回0，而SUM()、AVG()、MAX()和MIN()会返回NULL：</p>
+</blockquote>
+<h5 id="分组聚合"><a href="#分组聚合" class="headerlink" title="分组聚合"></a>分组聚合</h5><blockquote>
+<p>GROUP BY</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>) num <span class="keyword">FROM</span> students <span class="keyword">GROUP</span> <span class="keyword">BY</span> class_id;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>执行这个查询，COUNT()的结果不再是一个，而是3个，这是因为，GROUP BY子句指定了按class_id分组，因此，执行该SELECT语句时，会把class_id相同的列先分组，再分别计算，因此，得到了3行结果。<br>但是这3行结果分别是哪三个班级的，不好看出来，所以我们可以把class_id列也放入结果集中：</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> class_id, <span class="built_in">COUNT</span>(<span class="operator">*</span>) num <span class="keyword">FROM</span> students <span class="keyword">GROUP</span> <span class="keyword">BY</span> class_id;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>也可以使用多个列进行分组。例如，我们想统计各班的男生和女生人数：</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> class_id, gender, <span class="built_in">COUNT</span>(<span class="operator">*</span>) num <span class="keyword">FROM</span> students <span class="keyword">GROUP</span> <span class="keyword">BY</span> class_id, gender;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>上述查询结果集一共有6条记录，分别对应各班级的男生和女生人数。</p>
+</blockquote>
+<h4 id="多表查询"><a href="#多表查询" class="headerlink" title="多表查询"></a>多表查询</h4><h5 id="查询多张表"><a href="#查询多张表" class="headerlink" title="查询多张表"></a>查询多张表</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> students, classes;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>students表的每一行与classes表的每一行都两两拼在一起返回。<br>结果集的列数是students表和classes表的列数之和，行数是students表和classes表的行数之积。</p>
+</blockquote>
+<blockquote>
+<p>这种多表查询又称笛卡尔查询，使用笛卡尔查询时要非常小心，由于结果集是目标表的行数乘积，对两个各自有100行记录的表进行笛卡尔查询将返回1万条记录，对两个各自有1万行记录的表进行笛卡尔查询将返回1亿条记录。</p>
+</blockquote>
+<blockquote>
+<p>正确用法</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>    students.id sid,    students.name,    students.gender,    students.score,    classes.id cid,    classes.name cnameFROM students, classes;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>表允许设置别名</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>    s.id sid,    s.name,    s.gender,    s.score,    c.id cid,    c.name cnameFROM students s, classes c;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>WHERE</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>    s.id sid,    s.name,    s.gender,    s.score,    c.id cid,    c.name cnameFROM students s, classes cWHERE s.gender <span class="operator">=</span> <span class="string">&#x27;M&#x27;</span> <span class="keyword">AND</span> c.id <span class="operator">=</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h4><blockquote>
+<p>连接查询是另一种类型的多表查询。<br>连接查询对多个表进行JOIN运算，简单地说，就是先确定一个主表作为结果集，然后，把其他表的行有选择性地“连接”在主表结果集上。</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> s.id, s.name, s.class_id, s.gender, s.score <span class="keyword">FROM</span> students s;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>上面的结果集只有class_id列，缺少对应班级的name列。<br>最常用的一种内连接——INNER JOIN来实现：（内连接）</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> s.id, s.name, s.class_id, c.name class_name, s.gender, s.scoreFROM students sINNER <span class="keyword">JOIN</span> classes cON s.class_id <span class="operator">=</span> c.id;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>INNER JOIN查询的写法是：</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">先确定主表，仍然使用FROM &lt;表1&gt;的语法；再确定需要连接的表，使用INNER JOIN &lt;表2&gt;的语法；然后确定连接条件，使用ON &lt;条件...&gt;，这里的条件是s.class_id = c.id，表示students表的class_id列与classes表的id列相同的行需要连接；可选：加上WHERE子句、ORDER BY等子句。</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>使用别名不是必须的，但可以更好地简化查询语句。</p>
+</blockquote>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><h4 id="总数"><a href="#总数" class="headerlink" title="总数"></a>总数</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> count <span class="keyword">as</span> totalcount <span class="keyword">from</span> table1</span><br></pre></td></tr></table></figure>
+
+<h4 id="求和"><a href="#求和" class="headerlink" title="求和"></a>求和</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">sum</span>(field1) <span class="keyword">as</span> sumvalue <span class="keyword">from</span> table1</span><br></pre></td></tr></table></figure>
+
+<h4 id="平均"><a href="#平均" class="headerlink" title="平均"></a>平均</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">avg</span>(field1) <span class="keyword">as</span> avgvalue <span class="keyword">from</span> table1</span><br></pre></td></tr></table></figure>
+
+<h4 id="最大"><a href="#最大" class="headerlink" title="最大"></a>最大</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">max</span>(field1) <span class="keyword">as</span> maxvalue <span class="keyword">from</span> table1</span><br></pre></td></tr></table></figure>
+
+<h4 id="最小"><a href="#最小" class="headerlink" title="最小"></a>最小</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">min</span>(field1) <span class="keyword">as</span> minvalue <span class="keyword">from</span> table1</span><br></pre></td></tr></table></figure>
+
+<h3 id="高级查询运算词"><a href="#高级查询运算词" class="headerlink" title="高级查询运算词"></a>高级查询运算词</h3><h4 id="UNION-运算符"><a href="#UNION-运算符" class="headerlink" title="UNION 运算符"></a>UNION 运算符</h4><p>UNION 运算符通过组合其他两个结果表（例如 TABLE1 和<br>TABLE2）并消去表中任何重复行而派生出一个结果表。</p>
+<p>当 ALL 随 UNION 一起使用时（即 UNION ALL），不消除重复行。</p>
+<p>两种情况下，派生表的每一行不是来自 TABLE1 就是来自 TABLE2。 </p>
+<h4 id="EXCEPT-运算符"><a href="#EXCEPT-运算符" class="headerlink" title="EXCEPT 运算符"></a>EXCEPT 运算符</h4><p>EXCEPT运算符通过包括所有在 TABLE1 中但不在 TABLE2 中的行并消除所有重复行而派生出一个结果表。</p>
+<p>当 ALL 随 EXCEPT 一起使用时 (EXCEPT ALL)，不消除重复行。</p>
+<h4 id="INTERSECT-运算符"><a href="#INTERSECT-运算符" class="headerlink" title="INTERSECT 运算符"></a>INTERSECT 运算符</h4><p>INTERSECT运算符通过只包括 TABLE1 和 TABLE2 中都有的行并消除所有重复行而派生出一个结果表。</p>
+<p>当 ALL随 INTERSECT 一起使用时 (INTERSECT ALL)，不消除重复行。 </p>
+<p>注：使用运算词的几个查询结果行必须是一致的。 </p>
+<h3 id="使用外连接"><a href="#使用外连接" class="headerlink" title="使用外连接"></a>使用外连接</h3><h4 id="left（outer）join"><a href="#left（outer）join" class="headerlink" title="left（outer）join"></a>left（outer）join</h4><p>左外连接（左连接）：结果集几包括连接表的匹配行，也包括左连接表的所有行。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> a.a, a.b, a.c, b.c, b.d, b.f <span class="keyword">from</span> a <span class="keyword">LEFT</span> <span class="keyword">OUT</span> <span class="keyword">JOIN</span> b <span class="keyword">ON</span> a.a <span class="operator">=</span> b.c</span><br></pre></td></tr></table></figure>
+
+<h4 id="right（outer）join"><a href="#right（outer）join" class="headerlink" title="right（outer）join"></a>right（outer）join</h4><p>右外连接(右连接)：结果集既包括连接表的匹配连接行，也包括右连接表的所有行。 </p>
+<h4 id="full-cross（outer）join"><a href="#full-cross（outer）join" class="headerlink" title="full/cross（outer）join"></a>full/cross（outer）join</h4><p>全外连接：不仅包括符号连接表的匹配行，还包括两个连接表中的所有记录。</p>
+<h3 id="分组Group-by"><a href="#分组Group-by" class="headerlink" title="分组Group by"></a>分组Group by</h3><p>一张表，一旦分组 完成后，查询后只能得到组相关的信息。</p>
+<blockquote>
+<p>组相关的信息：（统计信息） count,sum,max,min,avg  分组的标准)</p>
+</blockquote>
+<p>在select统计函数中的字段，不能和普通的字段放在一起。</p>
+
+    </div>
+    
+    <div class="reward" ontouchstart>
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            <span class="reward-type">
+                <img class="alipay" src="/img/alipay.jpg"><b>支付宝打赏</b>
+            </span>
+            
+            
+            <span class="reward-type">
+                <img class="wechat" src="/img/wechat.jpg"><b>微信打赏</b>
+            </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">
+        谢谢~
+    </p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2021/01/24/database1/" class="pre-post btn btn-default" title='MySQL建表规约整理-《Java开发手册》'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            MySQL建表规约整理-《Java开发手册》</span>
+    </a>
+    
+    
+    <a href="/2020/09/15/nginx1/" class="next-post btn btn-default" title='Nginx--Linux上搭建静态资源服务器'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            Nginx--Linux上搭建静态资源服务器</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B4%E6%98%8E%E4%B8%80%E4%B8%8B"><span class="toc-text">说明一下</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DDL%EF%BC%88%E6%95%B0%E6%8D%AE%E5%AE%9A%E4%B9%89%E8%AF%AD%E8%A8%80%EF%BC%89"><span class="toc-text">DDL（数据定义语言）</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%96%B0%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">创建新数据库</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">删除数据库</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%B4%A2%E5%BC%95"><span class="toc-text">创建索引</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E7%B4%A2%E5%BC%95"><span class="toc-text">删除索引</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DML%EF%BC%88%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E8%AF%AD%E8%A8%80%EF%BC%89"><span class="toc-text">DML（数据操作语言）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#insert%EF%BC%88%E6%8F%92%E5%85%A5%EF%BC%89"><span class="toc-text">insert（插入）</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%8D%95%E6%9D%A1%E6%8F%92%E5%85%A5"><span class="toc-text">单条插入</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%A4%9A%E6%9D%A1%E6%8F%92%E5%85%A5"><span class="toc-text">多条插入</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#delete%EF%BC%88%E5%88%A0%E9%99%A4%EF%BC%89"><span class="toc-text">delete（删除）</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%8D%95%E6%9D%A1"><span class="toc-text">单条</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%A4%9A%E6%9D%A1"><span class="toc-text">多条</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%EF%BC%88update%EF%BC%89"><span class="toc-text">更新（update）</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%8D%95%E6%9D%A1-1"><span class="toc-text">单条</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%A4%9A%E6%9D%A1-1"><span class="toc-text">多条</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text">使用表达式</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%EF%BC%88select%EF%BC%89"><span class="toc-text">查询（select）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#select%E5%B8%B8%E8%A7%81%E5%AE%8C%E6%95%B4%E8%AF%AD%E5%8F%A5"><span class="toc-text">select常见完整语句</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%8F%E5%85%B8%E6%9F%A5%E8%AF%A2"><span class="toc-text">经典查询</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E6%89%80%E6%9C%89"><span class="toc-text">查询所有</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E5%8D%95%E8%A1%8C%E3%80%81%E5%A4%9A%E8%A1%8C"><span class="toc-text">查询单行、多行</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%95%E5%BD%B1%E6%9F%A5%E8%AF%A2"><span class="toc-text">投影查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F"><span class="toc-text">排序</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#ASC%E5%8D%87%E5%BA%8F"><span class="toc-text">ASC升序</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#DECS%E9%99%8D%E5%BA%8F"><span class="toc-text">DECS降序</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%A4%9A%E6%8E%92%E5%BA%8F"><span class="toc-text">多排序</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2"><span class="toc-text">分页查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%81%9A%E5%90%88%E6%9F%A5%E8%AF%A2"><span class="toc-text">聚合查询</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%86%E7%BB%84%E8%81%9A%E5%90%88"><span class="toc-text">分组聚合</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2"><span class="toc-text">多表查询</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E5%A4%9A%E5%BC%A0%E8%A1%A8"><span class="toc-text">查询多张表</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2"><span class="toc-text">连接查询</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-text">函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E6%95%B0"><span class="toc-text">总数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B1%82%E5%92%8C"><span class="toc-text">求和</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B9%B3%E5%9D%87"><span class="toc-text">平均</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%80%E5%A4%A7"><span class="toc-text">最大</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%80%E5%B0%8F"><span class="toc-text">最小</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E6%9F%A5%E8%AF%A2%E8%BF%90%E7%AE%97%E8%AF%8D"><span class="toc-text">高级查询运算词</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#UNION-%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">UNION 运算符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#EXCEPT-%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">EXCEPT 运算符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#INTERSECT-%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">INTERSECT 运算符</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%A4%96%E8%BF%9E%E6%8E%A5"><span class="toc-text">使用外连接</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#left%EF%BC%88outer%EF%BC%89join"><span class="toc-text">left（outer）join</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#right%EF%BC%88outer%EF%BC%89join"><span class="toc-text">right（outer）join</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#full-cross%EF%BC%88outer%EF%BC%89join"><span class="toc-text">full&#x2F;cross（outer）join</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E7%BB%84Group-by"><span class="toc-text">分组Group by</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2021
+                    <img src="/img/icp.png"><a href="//beian.miit.gov.cn/" target="_blank" rel="nofollow">
+                        桂ICP备20004986号</a>
+                    
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>

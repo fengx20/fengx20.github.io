@@ -1,0 +1,367 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Fengx">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://example.com">
+    <!--SEO-->
+
+<meta name="keywords" content="标签1,标签2" />
+
+
+<meta name="description" content="搭建服务器原因前后端分离已成为互联网项目开发的业界标准使用方式，通过nginx+tomcat的方式（也可以中间加一个nodejs）有效的进行解耦，并且前后端分离会为以后的大型分布式架构、弹性计算..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    Nginx--Linux上搭建静态资源服务器 |
+    
+    Fengx
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Fengx" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/banner2.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Fengx'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <h2>
+                戒骄戒躁
+            </h2>
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://example.com">
+                        Fengx</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa fa-home"></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/操作系统/"><i class="fa fa-book"></i>
+                                操作系统</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/网络/"><i class="fa fa-book"></i>
+                                网络</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/数据结构与算法/"><i class="fa fa-book"></i>
+                                数据结构与算法</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/设计模式/"><i class="fa fa-book"></i>
+                                设计模式</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/知识体系/"><i class="fa fa-code"></i>
+                                Java</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/数据库/"><i class="fa fa-table"></i>
+                                数据库</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa fa-history"></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Nginx--Linux上搭建静态资源服务器">
+            
+            Nginx--Linux上搭建静态资源服务器
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E5%88%86%E7%B1%BB1/">分类1</a> <a class="category-link" href="/categories/%E5%88%86%E7%B1%BB1/%E5%88%86%E7%B1%BB2/">分类2</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-none-link" href="/tags/%E6%A0%87%E7%AD%BE1/" rel="tag">标签1</a> <a class="tag-none-link" href="/tags/%E6%A0%87%E7%AD%BE2/" rel="tag">标签2</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2020/09/15</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h1 id="搭建服务器原因"><a href="#搭建服务器原因" class="headerlink" title="搭建服务器原因"></a>搭建服务器原因</h1><p>前后端分离已成为互联网项目开发的业界标准使用方式，通过nginx+tomcat的方式（也可以中间加一个nodejs）有效的进行解耦，并且前后端分离会为以后的大型分布式架构、弹性计算架构、微服务架构、多端化服务（多种客户端，例如：浏览器，车载终端，安卓，IOS等等）打下坚实的基础。这个步骤是系统架构从猿进化成人的必经之路。<br>核心思想是前端html页面通过ajax调用后端的restuful api接口并使用json数据进行交互。<br>在互联网架构中：<br>Web服务器：一般指像nginx，apache这类的服务器，他们一般只能解析静态资源。<br>应用服务器：一般指像tomcat，jetty，resin这类的服务器可以解析动态资源也可以解析静态资源，但解析静态资源的能力没有web服务器好。<br>一般都是只有web服务器才能被外网访问，应用服务器只能内网访问。</p>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Nginx是一款轻量级的网页服务器、反向代理服务器。相较于Apache、lighttpd具有占有内存少，稳定性高等优势。它最常的用途是提供反向代理服务。</p>
+<h1 id="开始搭建"><a href="#开始搭建" class="headerlink" title="开始搭建"></a>开始搭建</h1><h2 id="Linux下安装Node-js环境"><a href="#Linux下安装Node-js环境" class="headerlink" title="Linux下安装Node.js环境"></a>Linux下安装Node.js环境</h2><h3 id="下载nodejs程序包"><a href="#下载nodejs程序包" class="headerlink" title="下载nodejs程序包"></a>下载nodejs程序包</h3><p>网址：<a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a><br><img src="https://imgconvert.csdnimg.cn/aHR0cDovLzEyMS4xOTkuNjAuMTYxL3N0YXRpYy9pbWcvYmxvZzEtMS5wbmc?x-oss-process=image/format,png"></p>
+<h3 id="把程序包上传到服务器"><a href="#把程序包上传到服务器" class="headerlink" title="把程序包上传到服务器"></a>把程序包上传到服务器</h3><p>例如放在home文件夹</p>
+<h3 id="进入所在目录，解压"><a href="#进入所在目录，解压" class="headerlink" title="进入所在目录，解压"></a>进入所在目录，解压</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf node-v6.11.2-linux-x64.tar.xz</span><br></pre></td></tr></table></figure>
+
+<h3 id="重命名文件夹"><a href="#重命名文件夹" class="headerlink" title="重命名文件夹"></a>重命名文件夹</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv node-v6.11.2-linux-x64 nodejs</span><br></pre></td></tr></table></figure>
+
+<h3 id="建立软链接，配置全局环境变量（根据自己的目录）"><a href="#建立软链接，配置全局环境变量（根据自己的目录）" class="headerlink" title="建立软链接，配置全局环境变量（根据自己的目录）"></a>建立软链接，配置全局环境变量（根据自己的目录）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ln -s /opt/nodejs/bin/npm /usr/local/bin/</span><br><span class="line">ln -s /opt/nodejs/bin/node /usr/local/bin/</span><br></pre></td></tr></table></figure>
+
+<h3 id="检查是否配置成功"><a href="#检查是否配置成功" class="headerlink" title="检查是否配置成功"></a>检查是否配置成功</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+
+<h3 id="建议"><a href="#建议" class="headerlink" title="建议"></a>建议</h3><blockquote>
+<p>通过cnpm命令安装包都会通过淘宝镜像NPM下载，速度会更快。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+
+<p>这里同样需要安装软连接：（文件名自己改）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s /root/node-v8.9.3-linux-x64/bin/cnpm /usr/local/bin/cnpm</span><br></pre></td></tr></table></figure>
+
+<p>到此安装完成。</p>
+</blockquote>
+<blockquote>
+<p>启动node推荐使用pm2启动，不然服务器断了连接服务就停止了，常规安装方式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm i pm2 -g</span><br></pre></td></tr></table></figure>
+
+<p>同样需要建立软连接：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s /root/node-v8.9.3-linux-x64/bin/pm2 /usr/local/bin/pm2</span><br></pre></td></tr></table></figure>
+
+<p>pm2的使用可以参考官网 <a target="_blank" rel="noopener" href="http://pm2.keymetrics.io/">http://pm2.keymetrics.io/</a></p>
+</blockquote>
+<hr>
+<h2 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h2><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>Nginx的安装依赖于以下三个包，在安装Nginx之前首先必须安装一下的三个包，注意安装顺序如下：</p>
+<blockquote>
+<p>SSL功能需要openssl库，直接通过yum安装: yum install openssl<br>gzip模块需要zlib库，直接通过yum安装: yum install zlib<br>rewrite模块需要pcre库，直接通过yum安装: yum install pcre</p>
+</blockquote>
+<h3 id="安装Nginx依赖项和Nginx"><a href="#安装Nginx依赖项和Nginx" class="headerlink" title="安装Nginx依赖项和Nginx"></a>安装Nginx依赖项和Nginx</h3><p>使用yum安装nginx需要包括Nginx的库，安装Nginx的库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm</span><br></pre></td></tr></table></figure>
+
+<p>使用下面命令安装nginx</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install nginx</span><br></pre></td></tr></table></figure>
+
+<p>启动Nginx</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service nginx start</span><br></pre></td></tr></table></figure>
+
+<p>停止</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service nginx stop</span><br></pre></td></tr></table></figure>
+
+<p>重启</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service nginx restart</span><br></pre></td></tr></table></figure>
+
+<h3 id="浏览器访问localhost就会出现Nginx的欢迎界面表示你安装成功了，否则就是安装失败了"><a href="#浏览器访问localhost就会出现Nginx的欢迎界面表示你安装成功了，否则就是安装失败了" class="headerlink" title="浏览器访问localhost就会出现Nginx的欢迎界面表示你安装成功了，否则就是安装失败了"></a>浏览器访问localhost就会出现Nginx的欢迎界面表示你安装成功了，否则就是安装失败了</h3><p><img src="https://imgconvert.csdnimg.cn/aHR0cDovLzEyMS4xOTkuNjAuMTYxL3N0YXRpYy9pbWcvYmxvZzEtMy5wbmc?x-oss-process=image/format,png"></p>
+<h3 id="配置Nginx"><a href="#配置Nginx" class="headerlink" title="配置Nginx"></a>配置Nginx</h3><blockquote>
+<p>CentOS安装Nginx后，安装在了 /etc/nginx/目录下，你可以打开/etc/nginx/conf.d/default.conf查看里面的配置，包括监听端口，域名和nginx访问的根目录</p>
+</blockquote>
+<blockquote>
+<p>进入nginx安装目录的conf.d目录下，修改default.conf文件，在一个server{}中添加 一个location 部分配置代码如下：</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">	listen  80;</span><br><span class="line">	server_name  localhost;</span><br><span class="line">	location / &#123;</span><br><span class="line">		root  html;</span><br><span class="line">		index  index.html index.htm;</span><br><span class="line">	&#125;</span><br><span class="line">	location /image/ &#123;</span><br><span class="line">	root  /usr/local/myImage/;</span><br><span class="line">	autoindex on;  //资源目录展开</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>从上面的配置可以看出来 端口为80，server_name为localhost（写ip地址也可以）</p>
+</blockquote>
+<blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">location /image/ &#123;</span><br><span class="line">	root  /usr/local/myImage/;</span><br><span class="line">	autoindex on;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个配置表示输入 localhost:80/image/ 时会访问本机的/usr/local/myImage/image/ 目录，所以在新建/usr/local/myImage/image/<br>目录，同时还要在nginx安装目录的html目录中新建一个与location中image同名的image目录，虽然该目录里面什么也没有，在/usr/local/myImage/image/<br>中我们放一张图片1.jpg上去，重启nginx服务，就可以通过localhost:80/image/1.jpg访问了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root@ubuntu:/usr/local/nginx/html# mkdir image</span><br><span class="line">root@ubuntu:/usr/local/nginx/html# mkdir /usr/local/myImage/image</span><br></pre></td></tr></table></figure>
+
+<p>放一张照片上去</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root@ubuntu:/usr/local/nginx/html# cd  /usr/local/myImage/image</span><br><span class="line">root@ubuntu:/usr/local/myImage/image# ls 1.jpg</span><br><span class="line">root@ubuntu:/usr/local/myImage/image#</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="重启nginx"><a href="#重启nginx" class="headerlink" title="重启nginx"></a>重启nginx</h3><h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><p><img src="https://imgconvert.csdnimg.cn/aHR0cDovLzEyMS4xOTkuNjAuMTYxL3N0YXRpYy9pbWcvYmxvZzEtMi5wbmc?x-oss-process=image/format,png"></p>
+
+    </div>
+    
+    <div class="reward" ontouchstart>
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            <span class="reward-type">
+                <img class="alipay" src="/img/alipay.jpg"><b>支付宝打赏</b>
+            </span>
+            
+            
+            <span class="reward-type">
+                <img class="wechat" src="/img/wechat.jpg"><b>微信打赏</b>
+            </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">
+        谢谢~
+    </p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2020/12/01/database2/" class="pre-post btn btn-default" title='开发必备----SQL'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            开发必备----SQL</span>
+    </a>
+    
+    
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8E%9F%E5%9B%A0"><span class="toc-text">搭建服务器原因</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BA"><span class="toc-text">开始搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E4%B8%8B%E5%AE%89%E8%A3%85Node-js%E7%8E%AF%E5%A2%83"><span class="toc-text">Linux下安装Node.js环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDnodejs%E7%A8%8B%E5%BA%8F%E5%8C%85"><span class="toc-text">下载nodejs程序包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%8A%E7%A8%8B%E5%BA%8F%E5%8C%85%E4%B8%8A%E4%BC%A0%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-text">把程序包上传到服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5%E6%89%80%E5%9C%A8%E7%9B%AE%E5%BD%95%EF%BC%8C%E8%A7%A3%E5%8E%8B"><span class="toc-text">进入所在目录，解压</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-text">重命名文件夹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B%E8%BD%AF%E9%93%BE%E6%8E%A5%EF%BC%8C%E9%85%8D%E7%BD%AE%E5%85%A8%E5%B1%80%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%EF%BC%88%E6%A0%B9%E6%8D%AE%E8%87%AA%E5%B7%B1%E7%9A%84%E7%9B%AE%E5%BD%95%EF%BC%89"><span class="toc-text">建立软链接，配置全局环境变量（根据自己的目录）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5%E6%98%AF%E5%90%A6%E9%85%8D%E7%BD%AE%E6%88%90%E5%8A%9F"><span class="toc-text">检查是否配置成功</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%BA%E8%AE%AE"><span class="toc-text">建议</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Nginx"><span class="toc-text">安装Nginx</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Nginx%E4%BE%9D%E8%B5%96%E9%A1%B9%E5%92%8CNginx"><span class="toc-text">安装Nginx依赖项和Nginx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AE%BF%E9%97%AElocalhost%E5%B0%B1%E4%BC%9A%E5%87%BA%E7%8E%B0Nginx%E7%9A%84%E6%AC%A2%E8%BF%8E%E7%95%8C%E9%9D%A2%E8%A1%A8%E7%A4%BA%E4%BD%A0%E5%AE%89%E8%A3%85%E6%88%90%E5%8A%9F%E4%BA%86%EF%BC%8C%E5%90%A6%E5%88%99%E5%B0%B1%E6%98%AF%E5%AE%89%E8%A3%85%E5%A4%B1%E8%B4%A5%E4%BA%86"><span class="toc-text">浏览器访问localhost就会出现Nginx的欢迎界面表示你安装成功了，否则就是安装失败了</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AENginx"><span class="toc-text">配置Nginx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%90%AFnginx"><span class="toc-text">重启nginx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%88%E6%9E%9C"><span class="toc-text">效果</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2021
+                    <img src="/img/icp.png"><a href="//beian.miit.gov.cn/" target="_blank" rel="nofollow">
+                        桂ICP备20004986号</a>
+                    
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>

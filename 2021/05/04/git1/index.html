@@ -1,0 +1,684 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Fengx">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://example.com">
+    <!--SEO-->
+
+<meta name="keywords" content="Git" />
+
+
+<meta name="description" content="基础知识版本控制系统
+svn
+
+集中式，有一个中央服务器，需要先从上面拉取最新的代码才能干活，干完活再推送上去，必须联网才能工作，对网络要求大
+
+基本概念
+
+repository
+
+源代码仓库
+..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    开发必备----Git |
+    
+    Fengx
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Fengx" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/banner2.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Fengx'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <h2>
+                戒骄戒躁
+            </h2>
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://example.com">
+                        Fengx</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa fa-home"></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/操作系统/"><i class="fa fa-book"></i>
+                                操作系统</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/网络/"><i class="fa fa-book"></i>
+                                网络</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/数据结构与算法/"><i class="fa fa-book"></i>
+                                数据结构与算法</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/设计模式/"><i class="fa fa-book"></i>
+                                设计模式</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/知识体系/"><i class="fa fa-code"></i>
+                                Java</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/数据库/"><i class="fa fa-table"></i>
+                                数据库</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa fa-history"></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="开发必备----Git">
+            
+            开发必备----Git
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/Git/">Git</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-none-link" href="/tags/Git/" rel="tag">Git</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2021/05/04</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="版本控制系统"><a href="#版本控制系统" class="headerlink" title="版本控制系统"></a>版本控制系统</h3><ul>
+<li><p>svn</p>
+<ul>
+<li><p>集中式，有一个中央服务器，需要先从上面拉取最新的代码才能干活，干完活再推送上去，必须联网才能工作，对网络要求大</p>
+</li>
+<li><p>基本概念</p>
+<ul>
+<li><p>repository</p>
+<ul>
+<li>源代码仓库</li>
+</ul>
+</li>
+<li><p>checkout</p>
+<ul>
+<li>提取代码</li>
+</ul>
+</li>
+<li><p>commit</p>
+<ul>
+<li>提交代码</li>
+</ul>
+</li>
+<li><p>update</p>
+<ul>
+<li><p>更新代码</p>
+<ul>
+<li>从远程仓库checkout代码 –&gt; 修改 –&gt; update代码（副本可能过期需要更新） –&gt;  调试没问题 –&gt; 提交 –&gt; 大家都可以看见</li>
+<li>修改不同代码会合并，修改同一行代码会产生冲突，需手动解决。</li>
+</ul>
+</li>
+<li><p>让我们假设 Tom 和 Jerry 是一个项目的两个开发者。他们同时从版本库中检出了最新的版本并开始工作。此时，工作副本是与版本库完全同步的。然后，Jerry 很高效的完成了他的工作并提交了更改到版本库中。<br>此时 Tom 的工作副本就过期了。更新操作将会从版本库中拉取 Jerry 的最新改动并将 Tom 的工作副本进行更新。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>开发</p>
+<ul>
+<li>修改之前更新一次，提交之前再更新一次</li>
+<li>先更新，再保留合并后的代码（删除多余的注释和代码），再提交即可解决冲突</li>
+<li>取消更改就右边远程版本复制到左边本地版本</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>git</p>
+<ul>
+<li>分布式，没有中央服务器，每个电脑就是一个完整的版本库，相互提交给对方就可看到相互的改动</li>
+<li>可以设置自己的分支进行开发并提交，最后需要合并</li>
+</ul>
+</li>
+</ul>
+<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><ul>
+<li><p>工作区</p>
+<ul>
+<li>自己电脑上看见的目录就是工作区</li>
+</ul>
+</li>
+<li><p>版本库</p>
+<ul>
+<li><p>仓库的 .git 文件夹就是版本库</p>
+</li>
+<li><p>暂存区</p>
+<ul>
+<li>就在版本库内</li>
+</ul>
+</li>
+<li><p>自动创建第一个master分支，以及指向master分支的指针HEAD</p>
+<ul>
+<li>add 添加到暂存区</li>
+<li>commit 将暂存区文件提交到当前分支</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
+<li>可以监听所有文本文件内容改动，但图像、视频等二进制文件内容改变无法监听，不能知道里面改了什么，只知道大小改变。</li>
+</ul>
+<h2 id="Git教程"><a href="#Git教程" class="headerlink" title="Git教程"></a>Git教程</h2><h3 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h3><ul>
+<li><p>1、新建目录，右键鼠标进入 Git Bash Here</p>
+</li>
+<li><p>2、git init</p>
+<ul>
+<li>将当前目录变成git管理的仓库</li>
+</ul>
+</li>
+<li><p>3、目录下创建一个文件</p>
+</li>
+<li><p>4、git add 文件名(可写多个文件名)</p>
+<ul>
+<li>添加文件到暂存区</li>
+<li>git add xx命令可以将xx文件添加到暂存区，如果有很多文件改动可以通过 git add -A . 来一次添加所有改变的文件。<ul>
+<li>注意 -A 选项后面还有一个小数点. </li>
+<li>git add -A表示添加所有内容， git add . 表示添加新文件和编辑过的文件不包括删除的文件;</li>
+<li>git add -u 表示添加编辑或者删除的文件，不包括新添加的文件</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>5、git commit -m “注释”</p>
+<ul>
+<li>暂存区的文件都提交到仓库</li>
+</ul>
+</li>
+<li><p>6、git status</p>
+<ul>
+<li>文件提交状态</li>
+<li>每次git commit后最好查看是否还有未提交</li>
+</ul>
+</li>
+<li><p>7、修改文件内容</p>
+</li>
+<li><p>8、git diff 文件名</p>
+<ul>
+<li>文件有修改，可查看文件修改了哪些地方</li>
+</ul>
+</li>
+<li><p>9、git status</p>
+<ul>
+<li>查看状态，显示有修改内容，并且未提交</li>
+</ul>
+</li>
+<li><p>10、 git add 文件名</p>
+<ul>
+<li>重复提交步骤</li>
+</ul>
+</li>
+<li><p>11、git commit -m “注释”</p>
+<ul>
+<li>重复提交步骤</li>
+</ul>
+</li>
+<li><p>12、git status </p>
+<ul>
+<li>再次查看状态</li>
+</ul>
+</li>
+<li><p>13、提交远程仓库</p>
+</li>
+</ul>
+<h3 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h3><ul>
+<li><p>注册GitHub账号</p>
+</li>
+<li><p>创建密钥与本地关联</p>
+</li>
+<li><p>创建仓库（名字最好与本地相同）</p>
+</li>
+<li><p>远程仓库与本地仓库关联</p>
+<ul>
+<li>git remote add origin <a target="_blank" rel="noopener" href="https://github.com/xxx/xxx.git">https://github.com/xxx/xxx.git</a></li>
+</ul>
+</li>
+<li><p>本地提交到远程仓库，与远程仓库同步</p>
+<ul>
+<li><p>git push -u origin master </p>
+<ul>
+<li>提交当前主分支(master)</li>
+<li>-u 表示本地分支与远程分支同步，远程不用创建新的分支</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>开发</p>
+<ul>
+<li>提交到本地版本库了，执行git push origin master 就可以提交到远程仓库</li>
+<li>这就是分布式版本库</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>注意：以上是先建好本地库，再有远程库流程，工作中一般是直接从远程仓库拉取代码下</strong></p>
+</blockquote>
+<h3 id="多人协作"><a href="#多人协作" class="headerlink" title="多人协作"></a>多人协作</h3><ul>
+<li><p>从远程库克隆</p>
+<ul>
+<li>创建好目录，在当前目录下 git bash</li>
+<li>git clone <a target="_blank" rel="noopener" href="https://github.com/xxx/xxx.git">https://github.com/xxx/xxx.git</a></li>
+</ul>
+</li>
+<li><p>查看远程库信息</p>
+<ul>
+<li>git remote</li>
+<li>git remote -v</li>
+</ul>
+</li>
+<li><p>本地主分支一定要与远程库对应，修复bug分支可以和本地主分支合并后再推送到远程库</p>
+</li>
+<li><p>多人协作工作模式流程</p>
+<ul>
+<li>1、首先，可以试图用 git push origin branch-name （分支名）推送自己的修改.</li>
+<li>2、如果推送失败，则因为远程分支比你的本地更新早，需要先用 git pull 试图合并。</li>
+<li>3、如果合并有冲突，则需要解决冲突，并在本地提交。再用 git push origin branch-name 推送。</li>
+</ul>
+</li>
+</ul>
+<h3 id="冲突解决"><a href="#冲突解决" class="headerlink" title="冲突解决"></a>冲突解决</h3><ul>
+<li>冲突表示：用 &lt;&lt;&lt;&lt;&lt;&lt;&lt; , =======, &gt;&gt;&gt;&gt;&gt;&gt;表示冲突的地方</li>
+<li>例如：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; <span class="string">HEAD</span></span><br><span class="line"><span class="string">22222222</span></span><br><span class="line"><span class="string">=======</span></span><br><span class="line"><span class="string">11111111111</span></span><br><span class="line"><span class="string">333333333333</span></span><br><span class="line"><span class="string">&gt;&gt;&gt;&gt;&gt;&gt;&gt; fenzhi1</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD  主分支上修改的内容</span><br><span class="line">======= 分隔符</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt;fenzhi1 分支上修改的内容</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>解决冲突：修改 fenzhi1 分支内容为主分支上的内容再添加，提交</li>
+</ul>
+<h3 id="创建和合并分支"><a href="#创建和合并分支" class="headerlink" title="创建和合并分支"></a>创建和合并分支</h3><ul>
+<li><p>多次提交时间串成一条时间线，就是一个主分支，即master分支，HEAD指向master也就是当前分支，master指向提交</p>
+</li>
+<li><p>创建分支并切换</p>
+<ul>
+<li><p>查看分支</p>
+<ul>
+<li><p>git branch</p>
+<ul>
+<li>带星号就是当前分支</li>
+</ul>
+</li>
+<li><p>创建分支</p>
+<ul>
+<li>git branch dev<ul>
+<li>创建dev分支</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>切换分支</p>
+<ul>
+<li><p>git checkout master</p>
+<ul>
+<li>切换master分支</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>创建并切换分支</p>
+<ul>
+<li>git checkout -b dev<ul>
+<li>-b 相当于 git branch</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>提交的分支不同，内容不同</p>
+</li>
+</ul>
+</li>
+<li><p>master(当前分支) 合并dev分支</p>
+<ul>
+<li><p>git merge dev</p>
+</li>
+<li><p>合并后删除dev分支</p>
+<ul>
+<li>git branch -d dev</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h2><h3 id="git-init"><a href="#git-init" class="headerlink" title="git init"></a>git init</h3><ul>
+<li>将当前目录变成git管理的仓库</li>
+</ul>
+<h3 id="git-clone-https-github-com-xxxx-xxxx-git"><a href="#git-clone-https-github-com-xxxx-xxxx-git" class="headerlink" title="git clone https://github.com/xxxx/xxxx.git"></a>git clone <a target="_blank" rel="noopener" href="https://github.com/xxxx/xxxx.git">https://github.com/xxxx/xxxx.git</a></h3><ul>
+<li>克隆远程库</li>
+<li>git clone -b [branch name] <a target="_blank" rel="noopener" href="https://github.com/xxxx/xxxx.git">https://github.com/xxxx/xxxx.git</a><ul>
+<li>克隆某个分支远程库</li>
+</ul>
+</li>
+</ul>
+<h3 id="git-add-文件名"><a href="#git-add-文件名" class="headerlink" title="git add 文件名"></a>git add 文件名</h3><ul>
+<li>添加文件到暂存区</li>
+<li>git add .  （小数点）<ul>
+<li>添加所有新增和有变动文件到暂存区</li>
+</ul>
+</li>
+</ul>
+<h3 id="git-commit-m-“注释”"><a href="#git-commit-m-“注释”" class="headerlink" title="git commit -m “注释”"></a>git commit -m “注释”</h3><ul>
+<li>提交到仓库</li>
+</ul>
+<h3 id="git-status"><a href="#git-status" class="headerlink" title="git status"></a>git status</h3><ul>
+<li>文件提交状态</li>
+<li>每次git commit后最好查看是否还有未提交</li>
+</ul>
+<h3 id="git-remote-add-origin-https-github-com-xxx-xxx-git"><a href="#git-remote-add-origin-https-github-com-xxx-xxx-git" class="headerlink" title="git remote add origin https://github.com/xxx/xxx.git"></a>git remote add origin <a target="_blank" rel="noopener" href="https://github.com/xxx/xxx.git">https://github.com/xxx/xxx.git</a></h3><ul>
+<li>与远程仓库关联</li>
+</ul>
+<h3 id="git-push-u-origin-master"><a href="#git-push-u-origin-master" class="headerlink" title="git push -u origin master"></a>git push -u origin master</h3><ul>
+<li>提交当前主分支</li>
+<li>-u 表示本地分支与远程分支同步，远程不用创建新的分支</li>
+<li>git push origin [branch name]<ul>
+<li>提交远程分支仓库</li>
+</ul>
+</li>
+</ul>
+<h3 id="git-pull-origin-master"><a href="#git-pull-origin-master" class="headerlink" title="git pull origin master"></a>git pull origin master</h3><ul>
+<li>取回远程主机主分支的更新，再与本地的指定分支合并。</li>
+</ul>
+<h3 id="git-log"><a href="#git-log" class="headerlink" title="git log"></a>git log</h3><ul>
+<li>git log  <ul>
+<li>查看所有提交的日志，由最近到最远时间</li>
+</ul>
+</li>
+<li>git log –oneline</li>
+<li>git log –pretty==oneline<ul>
+<li>简略版日志</li>
+</ul>
+</li>
+<li>git reflog</li>
+</ul>
+<h3 id="查看远程库信息"><a href="#查看远程库信息" class="headerlink" title="查看远程库信息"></a>查看远程库信息</h3><ul>
+<li>git remote</li>
+<li>git remote -v</li>
+</ul>
+<h3 id="git-diff-文件名"><a href="#git-diff-文件名" class="headerlink" title="git diff 文件名"></a>git diff 文件名</h3><ul>
+<li>文件有修改，查看文件修改了哪些地方</li>
+</ul>
+<h3 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h3><ul>
+<li><p>git reset –hard HEAD^</p>
+<ul>
+<li>回退到上一个版本，^^  则表示回退到上两个版本</li>
+</ul>
+</li>
+<li><p>git reset –hard HEAD~5</p>
+<ul>
+<li>回退到前 5 个版本</li>
+</ul>
+</li>
+<li><p>回退到最新版本</p>
+<ul>
+<li><p>git reflog</p>
+<ul>
+<li>可显示每次改动提交的版本号</li>
+</ul>
+</li>
+<li><p>git reset –hard 版本号</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="git-checkout-–-文件名-（文件名）"><a href="#git-checkout-–-文件名-（文件名）" class="headerlink" title="git checkout – 文件名 （文件名）"></a>git checkout – 文件名 （文件名）</h3><ul>
+<li><p>撤销修改（当不用版本回退时可使用）</p>
+<ul>
+<li><p>未添加到暂存区</p>
+<ul>
+<li>撤销当前修改内容</li>
+</ul>
+</li>
+<li><p>已添加到暂存区</p>
+<ul>
+<li>撤销未添加到暂存区的内容</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>– 不能漏，否则变成创建/切换分支</p>
+</li>
+</ul>
+<h3 id="rm-文件名-（文件名）"><a href="#rm-文件名-（文件名）" class="headerlink" title="rm 文件名 （文件名）"></a>rm 文件名 （文件名）</h3><ul>
+<li><p>删除文件</p>
+</li>
+<li><p>恢复文件</p>
+<ul>
+<li>git checkout – 文件名 （文件名）</li>
+<li>– 不能漏，否则变成创建/切换分支</li>
+</ul>
+</li>
+</ul>
+<h3 id="常用命令清单"><a href="#常用命令清单" class="headerlink" title="常用命令清单"></a>常用命令清单</h3><ul>
+<li><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html">http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html</a></li>
+</ul>
+
+    </div>
+    
+    <div class="reward" ontouchstart>
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            <span class="reward-type">
+                <img class="alipay" src="/img/alipay.jpg"><b>支付宝打赏</b>
+            </span>
+            
+            
+            <span class="reward-type">
+                <img class="wechat" src="/img/wechat.jpg"><b>微信打赏</b>
+            </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">
+        谢谢~
+    </p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2021/05/04/java2/" class="pre-post btn btn-default" title='Java多线程基础'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            Java多线程基础</span>
+    </a>
+    
+    
+    <a href="/2021/05/03/java1/" class="next-post btn btn-default" title='Java基础（复习整理）'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            Java基础（复习整理）</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-text">基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F"><span class="toc-text">版本控制系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-text">概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-text">注意事项</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git%E6%95%99%E7%A8%8B"><span class="toc-text">Git教程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A5%E9%97%A8"><span class="toc-text">入门</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="toc-text">远程仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E4%BA%BA%E5%8D%8F%E4%BD%9C"><span class="toc-text">多人协作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%B2%E7%AA%81%E8%A7%A3%E5%86%B3"><span class="toc-text">冲突解决</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%92%8C%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF"><span class="toc-text">创建和合并分支</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4"><span class="toc-text">基本命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#git-init"><span class="toc-text">git init</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-clone-https-github-com-xxxx-xxxx-git"><span class="toc-text">git clone https:&#x2F;&#x2F;github.com&#x2F;xxxx&#x2F;xxxx.git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-add-%E6%96%87%E4%BB%B6%E5%90%8D"><span class="toc-text">git add 文件名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-commit-m-%E2%80%9C%E6%B3%A8%E9%87%8A%E2%80%9D"><span class="toc-text">git commit -m “注释”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-status"><span class="toc-text">git status</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-remote-add-origin-https-github-com-xxx-xxx-git"><span class="toc-text">git remote add origin https:&#x2F;&#x2F;github.com&#x2F;xxx&#x2F;xxx.git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-push-u-origin-master"><span class="toc-text">git push -u origin master</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-pull-origin-master"><span class="toc-text">git pull origin master</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-log"><span class="toc-text">git log</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E8%BF%9C%E7%A8%8B%E5%BA%93%E4%BF%A1%E6%81%AF"><span class="toc-text">查看远程库信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-diff-%E6%96%87%E4%BB%B6%E5%90%8D"><span class="toc-text">git diff 文件名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%88%E6%9C%AC%E5%9B%9E%E9%80%80"><span class="toc-text">版本回退</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-checkout-%E2%80%93-%E6%96%87%E4%BB%B6%E5%90%8D-%EF%BC%88%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%89"><span class="toc-text">git checkout – 文件名 （文件名）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rm-%E6%96%87%E4%BB%B6%E5%90%8D-%EF%BC%88%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%89"><span class="toc-text">rm 文件名 （文件名）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B8%85%E5%8D%95"><span class="toc-text">常用命令清单</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2021
+                    <img src="/img/icp.png"><a href="//beian.miit.gov.cn/" target="_blank" rel="nofollow">
+                        桂ICP备20004986号</a>
+                    
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>

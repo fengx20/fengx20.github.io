@@ -1,0 +1,559 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Fengx">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://example.com">
+    <!--SEO-->
+
+<meta name="keywords" content="Docker" />
+
+
+<meta name="description" content="基础知识镜像image
+Docker镜像文件（核心文件）
+
+容器container
+image生成运行的实例
+
+仓库repository
+公共仓库
+
+Docker Hub
+
+改为国内镜像（阿里云..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    容器技术-Docker入门 |
+    
+    Fengx
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Fengx" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/banner2.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Fengx'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <h2>
+                戒骄戒躁
+            </h2>
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://example.com">
+                        Fengx</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa fa-home"></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/操作系统/"><i class="fa fa-book"></i>
+                                操作系统</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/网络/"><i class="fa fa-book"></i>
+                                网络</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/数据结构与算法/"><i class="fa fa-book"></i>
+                                数据结构与算法</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/设计模式/"><i class="fa fa-book"></i>
+                                设计模式</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/知识体系/"><i class="fa fa-code"></i>
+                                Java</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/数据库/"><i class="fa fa-table"></i>
+                                数据库</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa fa-history"></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="容器技术-Docker入门">
+            
+            容器技术-Docker入门
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/Docker/">Docker</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-none-link" href="/tags/Docker/" rel="tag">Docker</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2021/05/04</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="镜像image"><a href="#镜像image" class="headerlink" title="镜像image"></a>镜像image</h3><ul>
+<li>Docker镜像文件（核心文件）</li>
+</ul>
+<h3 id="容器container"><a href="#容器container" class="headerlink" title="容器container"></a>容器container</h3><ul>
+<li>image生成运行的实例</li>
+</ul>
+<h3 id="仓库repository"><a href="#仓库repository" class="headerlink" title="仓库repository"></a>仓库repository</h3><ul>
+<li><p>公共仓库</p>
+<ul>
+<li><p>Docker Hub</p>
+<ul>
+<li>改为国内镜像（阿里云…）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="C-S架构"><a href="#C-S架构" class="headerlink" title="C/S架构"></a>C/S架构</h3><h2 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h2><h3 id="验证安装"><a href="#验证安装" class="headerlink" title="验证安装"></a>验证安装</h3><ul>
+<li>docker version</li>
+<li>docker info</li>
+</ul>
+<h3 id="启动docker服务"><a href="#启动docker服务" class="headerlink" title="启动docker服务"></a>启动docker服务</h3><ul>
+<li>service docker start</li>
+<li>systemctl start docker</li>
+</ul>
+<h3 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h3><ul>
+<li>docker search [镜像名]</li>
+</ul>
+<h3 id="image"><a href="#image" class="headerlink" title="image"></a>image</h3><ul>
+<li><p>通过image文件才能生成容器，可以生成同时运行的多个容器</p>
+</li>
+<li><p>列出所有image文件</p>
+<ul>
+<li>docker image ls</li>
+</ul>
+</li>
+<li><p>删除image文件</p>
+<ul>
+<li>docker image rm [imagename]</li>
+</ul>
+</li>
+<li><p>拉取image文件</p>
+<ul>
+<li>docker image pull library/hello-world  (library可省略)</li>
+</ul>
+</li>
+</ul>
+<h3 id="container"><a href="#container" class="headerlink" title="container"></a>container</h3><ul>
+<li><p>image生成容器实例，如果本地仓库没有这个image文件会自动从公共仓库拉取下来</p>
+<ul>
+<li><p>docker container run hello-world</p>
+<ul>
+<li>新建容器</li>
+</ul>
+</li>
+<li><p>docker container start [containerID]</p>
+<ul>
+<li>运行已生成并且已停止的容器</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>容器执行完会自动停止，提供服务的（例如Ubuntu）不会停止</p>
+<ul>
+<li><p>手动终止</p>
+<ul>
+<li>docker container kill [containID]</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>容器生成后就有两个文件分别是image文件和容器文件，关闭容器不会删除容器文件</p>
+</li>
+<li><p>本机正在运行的容器</p>
+<ul>
+<li>docker container ls</li>
+<li>docker ps</li>
+</ul>
+</li>
+<li><p>所有容器</p>
+<ul>
+<li>docker container ls -all</li>
+</ul>
+</li>
+<li><p>删除容器</p>
+<ul>
+<li>docker container rm [containerID]</li>
+</ul>
+</li>
+<li><p>容器输出（日志）</p>
+<ul>
+<li>docker container log [containerID]</li>
+</ul>
+</li>
+<li><p>进入容器</p>
+<ul>
+<li>docker container exec -it [containerID] /bin/bash</li>
+</ul>
+</li>
+</ul>
+<h3 id="需要推广自己的软件，必须要制作image文件"><a href="#需要推广自己的软件，必须要制作image文件" class="headerlink" title="需要推广自己的软件，必须要制作image文件"></a>需要推广自己的软件，必须要制作image文件</h3><ul>
+<li><p>Dockerfile文件</p>
+<ul>
+<li>配置image，生成二进制image文件</li>
+</ul>
+</li>
+<li><p>制作自己的Docker容器</p>
+</li>
+</ul>
+<h2 id="安装实例"><a href="#安装实例" class="headerlink" title="安装实例"></a>安装实例</h2><h3 id="it、-itd"><a href="#it、-itd" class="headerlink" title="-it、-itd"></a>-it、-itd</h3><ul>
+<li><p>-i</p>
+<ul>
+<li>交互式操作</li>
+</ul>
+</li>
+<li><p>-t</p>
+<ul>
+<li>终端</li>
+</ul>
+</li>
+<li><p>-d</p>
+<ul>
+<li>容器后台运行，默认不会进入容器，需要docker exec 进入</li>
+</ul>
+</li>
+</ul>
+<h3 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h3><ul>
+<li><p>下载最新镜像</p>
+<ul>
+<li>docker pull nginx:latest</li>
+</ul>
+</li>
+<li><p>运行容器调整端口并在后台运行</p>
+<ul>
+<li>docker run –name nginx-test -p 8089:80 -d nginx</li>
+</ul>
+</li>
+<li><p>验证</p>
+<ul>
+<li>curl 127.0.0.1:8089</li>
+</ul>
+</li>
+</ul>
+<h3 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h3><ul>
+<li><p>下载最新镜像</p>
+<ul>
+<li>docker pull node:latest</li>
+</ul>
+</li>
+<li><p>运行</p>
+<ul>
+<li>docker run -itd –name node-test node</li>
+</ul>
+</li>
+<li><p>进入容器验证</p>
+<ul>
+<li>docker exec -it node-test /bin/bash</li>
+<li>node -v</li>
+</ul>
+</li>
+</ul>
+<h3 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h3><ul>
+<li><p>下载最新镜像</p>
+<ul>
+<li>docker pull mysql:latest</li>
+</ul>
+</li>
+<li><p>运行命名设置端口设置root密码</p>
+<ul>
+<li><p>docker run -itd –name mysql-test -p 3306:3306 -e MYSQL_ROOT_PASSWORD=19971114abc mysql</p>
+<ul>
+<li>-p 3306:3306 ：映射容器服务的 3306 端口到宿主机的 3306 端口，外部主机可以直接通过 宿主机ip:3306 访问到 MySQL 的服务</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>进入mysql容器</p>
+<ul>
+<li>docker exec -it mysql-test bash</li>
+</ul>
+</li>
+<li><p>登录mysql,查看版本</p>
+<ul>
+<li>mysql -u root -p19971114abc</li>
+</ul>
+</li>
+</ul>
+<h3 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h3><ul>
+<li><p>下载镜像</p>
+<ul>
+<li>docker pull tomcat</li>
+</ul>
+</li>
+<li><p>运行设置端口</p>
+</li>
+<li><p>测试</p>
+</li>
+</ul>
+<h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><ul>
+<li><p>镜像</p>
+<ul>
+<li>docker pull redis:latest</li>
+</ul>
+</li>
+<li><p>运行设置端口</p>
+<ul>
+<li>docker run -itd –name redis-test -p 6379:6379 redis</li>
+</ul>
+</li>
+<li><p>测试</p>
+<ul>
+<li>docker exec -it redis-test /bin/bash</li>
+<li>redis-cil</li>
+</ul>
+</li>
+</ul>
+<h3 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h3><ul>
+<li><p>镜像</p>
+<ul>
+<li>docker pull mongo:latest</li>
+</ul>
+</li>
+<li><p>运行设置端口</p>
+<ul>
+<li>docker run -itd –name mongo -p 27017:27017 mongo –auth</li>
+</ul>
+</li>
+<li><p>进入容器</p>
+<ul>
+<li>docker exec -it mongo mongo admin</li>
+</ul>
+</li>
+<li><p>创建一个名为 admin，密码为 123456 的用户。</p>
+<ul>
+<li>db.createUser({ user:’admin’,pwd:’123456’,roles:[ { role:’userAdminAnyDatabase’, db: ‘admin’}]});</li>
+</ul>
+</li>
+<li><p>尝试使用上面创建的用户信息进行连接。</p>
+<ul>
+<li>db.auth(‘admin’, ‘123456’)</li>
+</ul>
+</li>
+</ul>
+<h2 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h2><h3 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h3><ul>
+<li>软件把任务外包出去，让各种外部服务完成这些任务，软件本身只是底层服务的调度中心和组装层</li>
+<li>微服务很适合用 Docker 容器实现，每个容器承载一个服务。一台计算机同时运行多个容器，从而就能很轻松地模拟出复杂的微服务架构。</li>
+</ul>
+
+    </div>
+    
+    <div class="reward" ontouchstart>
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            <span class="reward-type">
+                <img class="alipay" src="/img/alipay.jpg"><b>支付宝打赏</b>
+            </span>
+            
+            
+            <span class="reward-type">
+                <img class="wechat" src="/img/wechat.jpg"><b>微信打赏</b>
+            </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">
+        谢谢~
+    </p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2021/05/30/csbase1/" class="pre-post btn btn-default" title='数据结构基础知识'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            数据结构基础知识</span>
+    </a>
+    
+    
+    <a href="/2021/05/04/java2/" class="next-post btn btn-default" title='Java多线程基础'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            Java多线程基础</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-text">基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%95%9C%E5%83%8Fimage"><span class="toc-text">镜像image</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8container"><span class="toc-text">容器container</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%93%E5%BA%93repository"><span class="toc-text">仓库repository</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-S%E6%9E%B6%E6%9E%84"><span class="toc-text">C&#x2F;S架构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4"><span class="toc-text">基本命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81%E5%AE%89%E8%A3%85"><span class="toc-text">验证安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8docker%E6%9C%8D%E5%8A%A1"><span class="toc-text">启动docker服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2"><span class="toc-text">搜索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#image"><span class="toc-text">image</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#container"><span class="toc-text">container</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9C%80%E8%A6%81%E6%8E%A8%E5%B9%BF%E8%87%AA%E5%B7%B1%E7%9A%84%E8%BD%AF%E4%BB%B6%EF%BC%8C%E5%BF%85%E9%A1%BB%E8%A6%81%E5%88%B6%E4%BD%9Cimage%E6%96%87%E4%BB%B6"><span class="toc-text">需要推广自己的软件，必须要制作image文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%AE%9E%E4%BE%8B"><span class="toc-text">安装实例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#it%E3%80%81-itd"><span class="toc-text">-it、-itd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Nginx"><span class="toc-text">Nginx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Node-js"><span class="toc-text">Node.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MySQL"><span class="toc-text">MySQL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Tomcat"><span class="toc-text">Tomcat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis"><span class="toc-text">Redis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MongoDB"><span class="toc-text">MongoDB</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1"><span class="toc-text">微服务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E6%83%B3"><span class="toc-text">思想</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2021
+                    <img src="/img/icp.png"><a href="//beian.miit.gov.cn/" target="_blank" rel="nofollow">
+                        桂ICP备20004986号</a>
+                    
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>
