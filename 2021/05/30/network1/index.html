@@ -1,0 +1,492 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Fengx">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://example.com">
+    <!--SEO-->
+
+<meta name="keywords" content="网络" />
+
+
+<meta name="description" content="计算机网络学习的核心内容就是网络协议的学习。
+网络协议
+网络协议是为计算机网络中进行数据交换而建立的规则、标准或者说是约定的集合。
+因为不同用户的数据终端可能采取的字符集是不同的，两者需要进行通..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    计算机网络学习整理 |
+    
+    Fengx
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Fengx" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/banner2.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Fengx'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <h2>
+                戒骄戒躁
+            </h2>
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://example.com">
+                        Fengx</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa fa-home"></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/知识体系/"><i class="fa fa-book"></i>
+                                知识体系</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/网络/"><i class="fa fa-book"></i>
+                                网络</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/操作系统/"><i class="fa fa-book"></i>
+                                操作系统</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/数据结构与算法/"><i class="fa fa-book"></i>
+                                数据结构与算法</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/设计模式/"><i class="fa fa-book"></i>
+                                设计模式</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/Java/"><i class="fa fa-code"></i>
+                                Java</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/Go/"><i class="fa fa-code"></i>
+                                Go</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/数据库/"><i class="fa fa-table"></i>
+                                数据库</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa fa-history"></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="计算机网络学习整理">
+            
+            计算机网络学习整理
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-none-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2021/05/30</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p><strong>计算机网络学习的核心内容就是网络协议的学习。</strong></p>
+<p><strong>网络协议</strong></p>
+<p>网络协议是为计算机网络中进行数据交换而建立的规则、标准或者说是约定的集合。</p>
+<p>因为不同用户的数据终端可能采取的字符集是不同的，两者需要进行通信，必须要在一定的标准上进行。一个很形象地比喻就是我们的语言，我们大天朝地广人多，地方性语言也非常丰富，而且方言之间差距巨大。A地区的方言可能B地区的人根本无法接受，所以我们要为全国人名进行沟通建立一个语言标准，这就是我们的普通话的作用。同样，放眼全球，我们与外国友人沟通的标准语言是英语，所以我们才要苦逼的学习英语。</p>
+<p>计算机网络协议同我们的语言一样，多种多样。而ARPA公司与1977年到1979年推出了一种名为ARPANET的网络协议受到了广泛的热捧，其中最主要的原因就是它推出了人尽皆知的TCP/IP标准网络协议。目前TCP/IP协议已经成为Internet中的”通用语言”，下图为不同计算机群之间利用TCP/IP进行通信的示意图。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fengx20/cdn/img/net/net1-1.jpg"></p>
+<h2 id="网络层次的划分"><a href="#网络层次的划分" class="headerlink" title="网络层次的划分"></a>网络层次的划分</h2><p>为了使不同计算机厂家生产的计算机能够相互通信，以便在更大的范围内建立计算机网络，国际标准化组织（ISO）在1978年提出了”开放系统互联参考模型”，即著名的OSI/RM模型（Open System Interconnection/Reference Model）。它将计算机网络体系结构的通信协议划分为七层，自下而上依次为：</p>
+<ul>
+<li><strong>物理层（Physics Layer）</strong></li>
+<li><strong>数据链路层（Data Link Layer）</strong></li>
+<li><strong>网络层（Network Layer）</strong></li>
+<li><strong>传输层（Transport Layer）</strong></li>
+<li><strong>会话层（Session Layer）</strong></li>
+<li><strong>表示层（Presentation Layer）</strong></li>
+<li><strong>应用层（Application Layer）</strong></li>
+</ul>
+<p>其中第四层完成数据传送服务，上面三层面向用户。除了标准的OSI七层模型以外，常见的网络层次划分还有TCP/IP四层协议以及TCP/IP五层协议，它们之间的对应关系如下图所示：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fengx20/cdn/img/net/net1-2.jpg"></p>
+<h2 id="OSI七层网络模型"><a href="#OSI七层网络模型" class="headerlink" title="OSI七层网络模型"></a>OSI七层网络模型</h2><p><strong>TCP/IP协议毫无疑问是互联网的基础协议，没有它就根本不可能上网，任何和互联网有关的操作都离不开TCP/IP协议。</strong></p>
+<p>不管是OSI七层模型还是TCP/IP的四层、五层模型，每一层中都要自己的专属协议，完成自己相应的工作以及与上下层级之间进行沟通。由于OSI七层模型为网络的标准层次划分，所以我们以OSI七层模型为例从下向上进行一一介绍。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fengx20/cdn/img/net/net1-3.jpg"></p>
+<h3 id="物理层（Physical-Layer）"><a href="#物理层（Physical-Layer）" class="headerlink" title="物理层（Physical Layer）"></a>物理层（Physical Layer）</h3><p>激活、维持、关闭通信端点之间的机械特性、电气特性、功能特性以及过程特性。该层为上层协议提供了一个传输数据的可靠的物理媒体。简单的说，物理层确保原始的数据可在各种物理媒体上传输。物理层记住两个重要的设备名称，中继器（Repeater，也叫放大器）和集线器。</p>
+<h3 id="数据链路层（Data-Link-Layer）"><a href="#数据链路层（Data-Link-Layer）" class="headerlink" title="数据链路层（Data Link Layer）"></a>数据链路层（Data Link Layer）</h3><p>数据链路层在物理层提供的服务的基础上向网络层提供服务，其最基本的服务是将源自网络层来的数据可靠地传输到相邻节点的目标机网络层。</p>
+<p>为达到这一目的，数据链路必须具备一系列相应的功能，主要有：如何将数据组合成数据块，在数据链路层中称这种数据块为帧（frame），帧是数据链路层的传送单位；如何控制帧在物理信道上的传输，包括如何处理传输差错，如何调节发送速率以使与接收方相匹配；以及在两个网络实体之间提供数据链路通路的建立、维持和释放的管理。</p>
+<p>数据链路层在不可靠的物理介质上提供可靠的传输。该层的作用包括：物理地址寻址、数据的成帧、流量控制、数据的检错、重发等。</p>
+<p>有关数据链路层的重要知识点：</p>
+<ul>
+<li>数据链路层为网络层提供可靠的数据传输；</li>
+<li>基本数据单位为帧；</li>
+<li>主要的协议：以太网协议；</li>
+<li>两个重要设备名称：网桥和交换机。</li>
+</ul>
+<h3 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h3><p>网络层的目的是实现两个端系统之间的数据透明传送，具体功能包括：</p>
+<ul>
+<li>寻址</li>
+<li>路由选择</li>
+<li>连接的建立、保持和终止等。</li>
+</ul>
+<p>它提供的服务使传输层不需要了解网络中的数据传输和交换技术。如果想用尽量少的词来记住网络层，那就是<strong>路径选择、路由及逻辑寻址</strong>。</p>
+<p>网络层中涉及众多的协议，其中包括最重要的协议，也是TCP/IP的核心协议——IP协议。IP协议非常简单，仅仅提供不可靠、无连接的传送服务。</p>
+<p>IP协议的主要功能有：</p>
+<ul>
+<li>无连接数据报传输</li>
+<li>数据报路由选择</li>
+<li>差错控制</li>
+</ul>
+<p>与IP协议配套使用实现其功能的还有地址解析协议ARP、逆地址解析协议RARP、因特网报文协议ICMP、因特网组管理协议IGMP。</p>
+<p>网络层的重点为：</p>
+<ul>
+<li>网络层负责对子网间的数据包进行路由选择。此外，网络层还可以实现拥塞控制、网际互连等功能；</li>
+<li>基本数据单位为IP数据报；</li>
+<li>包含的主要协议：<ul>
+<li>IP协议（Internet Protocol，因特网互联协议）</li>
+<li>ICMP协议（Internet Control Message Protocol，因特网控制报文协议）</li>
+<li>ARP协议（Address Resolution Protocol，地址解析协议）</li>
+<li>RARP协议（Reverse Address Resolution Protocol，逆地址解析协议）</li>
+<li>重要的设备：路由器</li>
+</ul>
+</li>
+</ul>
+<h3 id="传输层（Transport-Layer）"><a href="#传输层（Transport-Layer）" class="headerlink" title="传输层（Transport Layer）"></a>传输层（Transport Layer）</h3><p>第一个端到端，即主机到主机的层次。传输层负责将上层数据分段并提供端到端的、可靠的或不可靠的传输。此外，传输层还要处理端到端的差错控制和流量控制问题。 </p>
+<p>传输层的任务是根据通信子网的特性，最佳的利用网络资源，为两个端系统的会话层之间，提供建立、维护和取消传输连接的功能，负责端到端的可靠数据传输。在这一层，信息传送的协议数据单元称为段或报文。网络层只是根据网络地址将源结点发出的数据包传送到目的结点，而传输层则负责将数据可靠地传送到相应的端口。</p>
+<p>重点：</p>
+<ul>
+<li>传输层负责将上层数据分段并提供端到端的、可靠的或不可靠的传输以及端到端的差错控制和流量控制问题</li>
+<li>包含的主要协议：<ul>
+<li>TCP协议（Transmission Control Protocol，传输控制协议）</li>
+<li>UDP协议（User Datagram Protocol，用户数据报协议）</li>
+</ul>
+</li>
+<li>重要设备：网关。</li>
+</ul>
+<h3 id="会话层（Session-Layer）"><a href="#会话层（Session-Layer）" class="headerlink" title="会话层（Session Layer）"></a>会话层（Session Layer）</h3><p>会话层管理主机之间的会话进程，即<strong>负责建立、管理、终止进程之间的会话</strong>。会话层还利用在数据中插入校验点来实现数据的同步。</p>
+<h3 id="表示层（Presentation-Layer）"><a href="#表示层（Presentation-Layer）" class="headerlink" title="表示层（Presentation Layer）"></a>表示层（Presentation Layer）</h3><p>表示层对上层数据或信息进行变换以保证一个主机应用层信息可以被另一个主机的应用程序理解。表示层的数据转换包括<strong>数据的加密、压缩、格式转换</strong>等。</p>
+<h3 id="应用层（Application-Layer）"><a href="#应用层（Application-Layer）" class="headerlink" title="应用层（Application Layer）"></a>应用层（Application Layer）</h3><p>为操作系统或网络应用程序提供访问网络服务的接口。</p>
+<h3 id="会话层、表示层和应用层重点"><a href="#会话层、表示层和应用层重点" class="headerlink" title="会话层、表示层和应用层重点"></a>会话层、表示层和应用层重点</h3><ul>
+<li>数据传输基本单位为报文；</li>
+<li>包含的主要协议：<ul>
+<li>FTP（文件传送协议）</li>
+<li>Telnet（远程登录协议）</li>
+<li>DNS（域名解析协议）</li>
+<li>SMTP（邮件传送协议）</li>
+<li>POP3协议（邮局协议）</li>
+<li>HTTP协议（Hyper Text Transfer Protocol）</li>
+</ul>
+</li>
+</ul>
+<h2 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h2><h3 id="网络地址"><a href="#网络地址" class="headerlink" title="网络地址"></a>网络地址</h3><p>IP地址由网络号（包括子网号）和主机号组成，网络地址的主机号为全0，网络地址代表着整个网络。</p>
+<h3 id="广播地址"><a href="#广播地址" class="headerlink" title="广播地址"></a>广播地址</h3><p>广播地址通常称为直接广播地址，是为了区分受限广播地址。</p>
+<p>广播地址与网络地址的主机号正好相反，广播地址中，主机号为全1。当向某个网络的广播地址发送消息时，该网络内的所有主机都能收到该广播消息。</p>
+<h3 id="组播地址"><a href="#组播地址" class="headerlink" title="组播地址"></a>组播地址</h3><p>D类地址就是组播地址。</p>
+<p>先回忆下A，B，C，D类地址吧：</p>
+<ul>
+<li>A类地址以0开头，第一个字节作为网络号，地址范围为：0.0.0.0~127.255.255.255</li>
+<li>B类地址以10开头，前两个字节作为网络号，地址范围是：128.0.0.0~191.255.255.255</li>
+<li>C类地址以110开头，前三个字节作为网络号，地址范围是：192.0.0.0~223.255.255.255</li>
+<li>D类地址以1110开头，地址范围是224.0.0.0~239.255.255.255，D类地址作为组播地址（一对多的通信）</li>
+<li>E类地址以1111开头，地址范围是240.0.0.0~255.255.255.255，E类地址为保留地址，供以后使用。</li>
+</ul>
+<p><strong>注：只有A,B,C有网络号和主机号之分，D类地址和E类地址没有划分网络号和主机号。</strong></p>
+<h3 id="255-255-255-255"><a href="#255-255-255-255" class="headerlink" title="255.255.255.255"></a>255.255.255.255</h3><p>该IP地址指的是受限的广播地址。受限广播地址与一般广播地址（直接广播地址）的区别在于，受限广播地址只能用于本地网络，路由器不会转发以受限广播地址为目的地址的分组；一般广播地址既可在本地广播，也可跨网段广播。例如：主机192.168.1.1/30上的直接广播数据包后，另外一个网段192.168.1.5/30也能收到该数据报；若发送受限广播数据报，则不能收到。</p>
+<p><strong>注：一般的广播地址（直接广播地址）能够通过某些路由器（当然不是所有的路由器），而受限的广播地址不能通过路由器。</strong></p>
+<h3 id="0-0-0-0"><a href="#0-0-0-0" class="headerlink" title="0.0.0.0"></a>0.0.0.0</h3><p>常用于寻找自己的IP地址，例如在我们的RARP，BOOTP和DHCP协议中，若某个未知IP地址的无盘机想要知道自己的IP地址，它就以255.255.255.255为目的地址，向本地范围（具体而言是被各个路由器屏蔽的范围内）的服务器发送IP请求分组。</p>
+<h3 id="回环地址"><a href="#回环地址" class="headerlink" title="回环地址"></a>回环地址</h3><p>127.0.0.0/8被用作回环地址，回环地址表示本机的地址，常用于对本机的测试，用的最多的是127.0.0.1。</p>
+<h3 id="A、B、C类私有地址"><a href="#A、B、C类私有地址" class="headerlink" title="A、B、C类私有地址"></a>A、B、C类私有地址</h3><p>私有地址(private address)也叫专用地址，它们不会在全球使用，只具有本地意义。</p>
+<ul>
+<li>A类私有地址：10.0.0.0/8，范围是：10.0.0.0~10.255.255.255</li>
+<li>B类私有地址：172.16.0.0/12，范围是：172.16.0.0~172.31.255.255</li>
+<li>C类私有地址：192.168.0.0/16，范围是：192.168.0.0~192.168.255.255</li>
+</ul>
+<h2 id="TCP-IP协议"><a href="#TCP-IP协议" class="headerlink" title="TCP/IP协议"></a>TCP/IP协议</h2><p><strong>TCP/IP协议是Internet最基本的协议、Internet国际互联网络的基础，由网络层的IP协议和传输层的TCP协议组成。</strong></p>
+<p><strong>通俗而言：TCP负责发现传输的问题，一有问题就发出信号，要求重新传输，直到所有数据安全正确地传输到目的地。而IP是给因特网的每一台联网设备规定一个地址。</strong></p>
+<p>IP层接收由更低层（网络接口层例如以太网设备驱动程序）发来的数据包，并把该数据包发送到更高层–TCP或UDP层；相反，IP层也把从TCP或UDP层接收来的数据包传送到更低层。</p>
+<p>IP数据包是不可靠的，因为IP并没有做任何事情来确认数据包是否按顺序发送的或者有没有被破坏，IP数据包中含有发送它的主机的地址（源地址）和接收它的主机的地址（目的地址）。</p>
+<p><strong>TCP是面向连接的通信协议，通过三次握手建立连接，通讯完成时要拆除连接，由于TCP是面向连接的所以只能用于端到端的通讯。TCP提供的是一种可靠的数据流服务，采用”带重传的肯定确认”技术来实现传输的可靠性。TCP还采用一种称为”滑动窗口”的方式进行流量控制，所谓窗口实际表示接收能力，用以限制发送方的发送速度。</strong></p>
+<p><strong>TCP报文首部格式</strong></p>
+<p><img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/55dc4e84-573d-4c13-a765-52ed1dd251f9.png"></p>
+<p><strong>TCP连接建立过程：</strong></p>
+<p>首先Client端发送连接请求报文，Server端接受连接后回复ACK报文，并为这次连接分配资源。Client端接收到ACK报文后也向Server段发送ACK报文，并分配资源，这样TCP连接就建立了。</p>
+<p><strong>TCP连接断开过程：</strong></p>
+<blockquote>
+<p>C-&gt;S，S-&gt;C，C(FIN_WAIT)，C-&gt;S，C(TIME_WAIT)，S未发(证明S关闭)，C关闭</p>
+</blockquote>
+<p>假设Client端发起中断连接请求，也就是发送FIN报文。Server端接到FIN报文后，意思是说”我Client端没有数据要发给你了”，但是如果你还有数据没有发送完成，则不必急着关闭Socket，可以继续发送数据。所以你先发送ACK，”告诉Client端，你的请求我收到了，但是我还没准备好，请你继续等我的消息”。这个时候Client端就进入FIN_WAIT状态，继续等待Server端的FIN报文。当Server端确定数据已发送完成，则向Client端发送FIN报文，”告诉Client端，好了，我这边数据发完了，准备好关闭连接了”。Client端收到FIN报文后，”就知道可以关闭连接了，<strong>但是他还是不相信网络，</strong> 怕Server端不知道要关闭，所以发送ACK后进入TIME_WAIT状态，如果Server端没有收到ACK则可以重传。”，Server端收到ACK后，”就知道可以断开连接了”。Client端等待了 2MS 后依然没有收到回复，则证明Server端已正常关闭，那好，我Client端也可以关闭连接了。Ok，TCP连接就这样关闭了！</p>
+<h3 id="为什么要三次握手？"><a href="#为什么要三次握手？" class="headerlink" title="为什么要三次握手？"></a>为什么要三次握手？</h3><p><img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/e92d0ebc-7d46-413b-aec1-34a39602f787.png"></p>
+<p>在只有两次”握手”的情形下，假设Client想跟Server建立连接，但是却因为中途连接请求的数据报丢失了，故Client端不得不重新发送一遍；这个时候Server端仅收到一个连接请求，因此可以正常的建立连接。但是，有时候Client端重新发送请求不是因为数据报丢失了，而是有可能数据传输过程因为网络并发量很大在某结点被阻塞了，这种情形下Server端将先后收到2次请求，并持续等待两个Client请求向他发送数据…问题就在这里，Cient端实际上只有一次请求，而Server端却有2个响应，极端的情况可能由于Client端多次重新发送请求数据而导致Server端最后建立了N多个响应在等待，因而造成极大的资源浪费！所以，”三次握手”很有必要！</p>
+<h3 id="为什么要四次挥手？"><a href="#为什么要四次挥手？" class="headerlink" title="为什么要四次挥手？"></a>为什么要四次挥手？</h3><p><img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/f87afe72-c2df-4c12-ac03-9b8d581a8af8.jpg"></p>
+<p>试想一下，假如现在你是客户端你想断开跟Server的所有连接该怎么做？第一步，你自己先停止向Server端发送数据，并等待Server的回复。但事情还没有完，虽然你自身不往Server发送数据了，但是因为你们之前已经建立好平等的连接了，所以此时他也有主动权向你发送数据；故Server端还得终止主动向你发送数据，并等待你的确认。其实，说白了就是保证双方的一个合约的完整执行！</p>
+<p><strong>使用TCP的协议：</strong></p>
+<p>FTP（文件传输协议）、Telnet（远程登录协议）、SMTP（简单邮件传输协议）、POP3（和SMTP相对，用于接收邮件）、HTTP协议等。</p>
+<h2 id="UDP协议"><a href="#UDP协议" class="headerlink" title="UDP协议"></a>UDP协议</h2><p>UDP用户数据报协议，是面向无连接的通讯协议，UDP数据包括目的端口号和源端口号信息，由于通讯不需要连接，所以可以实现广播发送。</p>
+<p>UDP通讯时不需要接收方确认，属于不可靠的传输，可能会出现丢包现象，实际应用中要求程序员编程验证。</p>
+<p>UDP与TCP位于同一层，但它不管数据包的顺序、错误或重发。因此，UDP不被应用于那些使用虚电路的面向连接的服务，UDP主要用于那些面向查询—应答的服务，例如NFS。相对于FTP或Telnet，这些服务需要交换的信息量较小。</p>
+<p>每个UDP报文分UDP报头和UDP数据区两部分。报头由四个16位长（2字节）字段组成，分别说明该报文的源端口、目的端口、报文长度以及校验值。UDP报头由4个域组成，其中每个域各占用2个字节，具体如下：</p>
+<ul>
+<li>源端口号；</li>
+<li>目标端口号；</li>
+<li>数据报长度；</li>
+<li>校验值。</li>
+</ul>
+<p><strong>使用UDP协议包括：</strong></p>
+<p>TFTP（简单文件传输协议）、SNMP（简单网络管理协议）、DNS（域名解析协议）、NFS、BOOTP。</p>
+<p><strong>TCP 与 UDP 的区别：</strong></p>
+<p>TCP是面向连接的，可靠的字节流服务；UDP是面向无连接的，不可靠的数据报服务。</p>
+<h2 id="DNS协议"><a href="#DNS协议" class="headerlink" title="DNS协议"></a>DNS协议</h2><p>DNS是域名系统(DomainNameSystem)的缩写，该系统用于命名组织到域层次结构中的计算机和网络服务，可以简单地理解为将URL转换为IP地址。域名是由圆点分开一串单词或缩写组成的，每一个域名都对应一个惟一的IP地址，在Internet上域名与IP地址之间是一一对应的，DNS就是进行域名解析的服务器。DNS命名用于Internet等TCP/IP网络中，通过用户友好的名称查找计算机和服务。</p>
+<h2 id="NAT协议"><a href="#NAT协议" class="headerlink" title="NAT协议"></a>NAT协议</h2><p>NAT网络地址转换(Network Address Translation)属接入广域网(WAN)技术，是一种将私有（保留）地址转化为合法IP地址的转换技术，它被广泛应用于各种类型Internet接入方式和各种类型的网络中。原因很简单，NAT不仅完美地解决了lP地址不足的问题，而且还能够有效地避免来自网络外部的攻击，隐藏并保护网络内部的计算机。</p>
+<h2 id="DHCP协议"><a href="#DHCP协议" class="headerlink" title="DHCP协议"></a>DHCP协议</h2><p>DHCP动态主机设置协议（Dynamic Host Configuration Protocol）是一个局域网的网络协议，使用UDP协议工作，主要有两个用途：</p>
+<ul>
+<li>给内部网络或网络服务供应商自动分配IP地址。</li>
+<li>给用户或者内部网络管理员作为对所有计算机作中央管理的手段。</li>
+</ul>
+<h2 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h2><p><strong>超文本传输协议（HTTP，HyperText Transfer Protocol)是互联网上应用最为广泛的一种网络协议。所有的WWW文件都必须遵守这个标准。</strong></p>
+<p><strong>HTTP 协议包括哪些请求？</strong></p>
+<ul>
+<li>GET：请求读取由URL所标志的信息。</li>
+<li>POST：给服务器添加信息（如注释）。</li>
+<li>PUT：在给定的URL下存储一个文档。</li>
+<li>DELETE：删除给定的URL所标志的资源。
+　　</li>
+</ul>
+<p><strong>HTTP 中， POST 与 GET 的区别</strong></p>
+<ul>
+<li>Get是从服务器上获取数据，Post是向服务器传送数据。</li>
+<li>Get是把参数数据队列加到提交表单的Action属性所指向的URL中，值和表单内各个字段一一对应，在URL中可以看到。Post数据在URL不能看到。</li>
+<li>Get传送的数据量小，不能大于2KB；Post传送的数据量较大，一般被默认为不受限制。</li>
+<li>根据HTTP规范，GET用于信息获取，而且应该是安全的和幂等的。<ul>
+<li>安全的，意味着该操作用于获取信息而非修改信息。换句话说，GET请求一般不应产生副作用。就是说，它仅仅是获取资源信息，就像数据库查询一样，不会修改，增加数据，不会影响资源的状态。</li>
+<li>幂等，意味着对同一URL的多个请求应该返回同样的结果。</li>
+</ul>
+</li>
+</ul>
+<h2 id="必会"><a href="#必会" class="headerlink" title="必会"></a>必会</h2><h3 id="在浏览器中输入-http-www-baidu-com-后执行的全部过程。"><a href="#在浏览器中输入-http-www-baidu-com-后执行的全部过程。" class="headerlink" title="在浏览器中输入 http://www.baidu.com/ 后执行的全部过程。"></a>在浏览器中输入 <a target="_blank" rel="noopener" href="http://www.baidu.com/">http://www.baidu.com/</a> 后执行的全部过程。</h3><p>现在假设如果我们在（客户端）浏览器中输入 <a target="_blank" rel="noopener" href="http://www.baidu.com,而/">http://www.baidu.com，而</a> baidu.com 为要访问的服务器，下面详细分析客户端为了访问服务器而执行的一系列关于协议的操作：</p>
+<ul>
+<li>1、客户端浏览器通过<strong>DNS</strong> 解析到<a target="_blank" rel="noopener" href="http://www.baidu.com的**ip地址/">www.baidu.com的**IP地址</a>** 为220.181.27.48，通过这个IP地址找到客户端到服务器的路径。客户端浏览器发起一个<strong>HTTP会话</strong>到220.161.27.48，然后通过<strong>TCP</strong>进行封装数据包，输入到<strong>网络层</strong>。</li>
+<li>2、在客户端的<strong>传输层</strong>，把HTTP会话请求分成报文段，添加<strong>源和目的端口</strong>，如服务器使用80端口监听客户端的请求，客户端由系统随机选择一个端口如5000，与服务器进行交换，服务器把相应的请求返回给客户端的5000端口。然后使用IP层的IP地址查找目的端。</li>
+<li>3、（网络层）客户端的网络层不用关心应用层或者传输层的东西，主要做的是通过查找路由表确定如何到达服务器，期间可能经过多个路由器，这些都是由路由器来完成的工作，不作过多的描述，无非就是通过查找路由表决定通过那个路径到达服务器。</li>
+<li>4、（链路层）客户端的链路层，包通过链路层发送到路由器，通过邻居协议查找给定IP地址的MAC地址，然后发送ARP请求查找目的地址，如果得到回应后就可以使用ARP的请求应答交换的IP数据包现在就可以传输了，然后发送IP数据包到达服务器的地址。</li>
+</ul>
+
+    </div>
+    
+    <div class="reward" ontouchstart>
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            <span class="reward-type">
+                <img class="alipay" src="/img/alipay.jpg"><b>支付宝打赏</b>
+            </span>
+            
+            
+            <span class="reward-type">
+                <img class="wechat" src="/img/wechat.jpg"><b>微信打赏</b>
+            </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">
+        谢谢~
+    </p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2021/07/28/springcloud1/" class="pre-post btn btn-default" title='Spring Cloud （一）概述'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            Spring Cloud （一）概述</span>
+    </a>
+    
+    
+    <a href="/2021/05/30/csbase1/" class="next-post btn btn-default" title='数据结构基础知识'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            数据结构基础知识</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%B1%82%E6%AC%A1%E7%9A%84%E5%88%92%E5%88%86"><span class="toc-text">网络层次的划分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OSI%E4%B8%83%E5%B1%82%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B"><span class="toc-text">OSI七层网络模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%A9%E7%90%86%E5%B1%82%EF%BC%88Physical-Layer%EF%BC%89"><span class="toc-text">物理层（Physical Layer）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%EF%BC%88Data-Link-Layer%EF%BC%89"><span class="toc-text">数据链路层（Data Link Layer）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%B1%82"><span class="toc-text">网络层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%A0%E8%BE%93%E5%B1%82%EF%BC%88Transport-Layer%EF%BC%89"><span class="toc-text">传输层（Transport Layer）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%9A%E8%AF%9D%E5%B1%82%EF%BC%88Session-Layer%EF%BC%89"><span class="toc-text">会话层（Session Layer）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E7%A4%BA%E5%B1%82%EF%BC%88Presentation-Layer%EF%BC%89"><span class="toc-text">表示层（Presentation Layer）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%B1%82%EF%BC%88Application-Layer%EF%BC%89"><span class="toc-text">应用层（Application Layer）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%9A%E8%AF%9D%E5%B1%82%E3%80%81%E8%A1%A8%E7%A4%BA%E5%B1%82%E5%92%8C%E5%BA%94%E7%94%A8%E5%B1%82%E9%87%8D%E7%82%B9"><span class="toc-text">会话层、表示层和应用层重点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IP%E5%9C%B0%E5%9D%80"><span class="toc-text">IP地址</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80"><span class="toc-text">网络地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%BF%E6%92%AD%E5%9C%B0%E5%9D%80"><span class="toc-text">广播地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E6%92%AD%E5%9C%B0%E5%9D%80"><span class="toc-text">组播地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#255-255-255-255"><span class="toc-text">255.255.255.255</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0-0-0-0"><span class="toc-text">0.0.0.0</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9E%E7%8E%AF%E5%9C%B0%E5%9D%80"><span class="toc-text">回环地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#A%E3%80%81B%E3%80%81C%E7%B1%BB%E7%A7%81%E6%9C%89%E5%9C%B0%E5%9D%80"><span class="toc-text">A、B、C类私有地址</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP-IP%E5%8D%8F%E8%AE%AE"><span class="toc-text">TCP&#x2F;IP协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%EF%BC%9F"><span class="toc-text">为什么要三次握手？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%EF%BC%9F"><span class="toc-text">为什么要四次挥手？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UDP%E5%8D%8F%E8%AE%AE"><span class="toc-text">UDP协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DNS%E5%8D%8F%E8%AE%AE"><span class="toc-text">DNS协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NAT%E5%8D%8F%E8%AE%AE"><span class="toc-text">NAT协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DHCP%E5%8D%8F%E8%AE%AE"><span class="toc-text">DHCP协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP%E5%8D%8F%E8%AE%AE"><span class="toc-text">HTTP协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%85%E4%BC%9A"><span class="toc-text">必会</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%BE%93%E5%85%A5-http-www-baidu-com-%E5%90%8E%E6%89%A7%E8%A1%8C%E7%9A%84%E5%85%A8%E9%83%A8%E8%BF%87%E7%A8%8B%E3%80%82"><span class="toc-text">在浏览器中输入 http:&#x2F;&#x2F;www.baidu.com&#x2F; 后执行的全部过程。</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2021
+                    <img src="/img/icp.png"><a href="//beian.miit.gov.cn/" target="_blank" rel="nofollow">
+                        桂ICP备20004986号</a>
+                    
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>
