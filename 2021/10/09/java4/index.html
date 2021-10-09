@@ -1,0 +1,372 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Fengx">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://example.com">
+    <!--SEO-->
+
+<meta name="keywords" content="Java,集合" />
+
+
+<meta name="description" content="理解HashMap先要理解HashCode
+HashCodeHashCode 为什么使用 31 作为乘数？ 
+HashCode源码
+123456789101112// 获取 hashCode &..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    HashMap底层实现整理 |
+    
+    Fengx
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Fengx" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/banner2.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Fengx'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <h2>
+                戒骄戒躁
+            </h2>
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://example.com">
+                        Fengx</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa fa-home"></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/知识体系/"><i class="fa fa-book"></i>
+                                知识体系</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/网络/"><i class="fa fa-book"></i>
+                                网络</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/操作系统/"><i class="fa fa-book"></i>
+                                操作系统</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/数据结构与算法/"><i class="fa fa-book"></i>
+                                数据结构与算法</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/设计模式/"><i class="fa fa-book"></i>
+                                设计模式</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/Java/"><i class="fa fa-code"></i>
+                                Java</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/Go/"><i class="fa fa-code"></i>
+                                Go</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/数据库/"><i class="fa fa-table"></i>
+                                数据库</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa fa-history"></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="HashMap底层实现整理">
+            
+            HashMap底层实现整理
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/Java/">Java</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-none-link" href="/tags/Java/" rel="tag">Java</a> <a class="tag-none-link" href="/tags/%E9%9B%86%E5%90%88/" rel="tag">集合</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2021/10/09</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p><strong>理解HashMap先要理解HashCode</strong></p>
+<h3 id="HashCode"><a href="#HashCode" class="headerlink" title="HashCode"></a>HashCode</h3><p><strong>HashCode 为什么使用 31 作为乘数？</strong> </p>
+<p>HashCode源码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取 hashCode &quot;abc&quot;.hashCode();</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> h = hash;</span><br><span class="line">	<span class="keyword">if</span> (h == <span class="number">0</span> &amp;&amp; value.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">char</span> val[] = value;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; value.length; i++) &#123;</span><br><span class="line">            h = <span class="number">31</span> * h + val[i];</span><br><span class="line">		&#125;</span><br><span class="line">		hash = h;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> h;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>乘数是 2 时，hash 的取值范围比较小，基本是堆积到一个范围内了。</p>
+</li>
+<li><p>乘数是 3、5、7、17 等，都有较大的碰撞概率。</p>
+</li>
+<li><p><strong>乘数是 31 的时候，碰撞的概率已经很小了，基本稳定。</strong></p>
+</li>
+<li><p>顺着往下看，你会发现 199 的碰撞概率更小，这就相当于一排奇数的茅坑量多，自然会减少碰撞。<strong>但这个范围值已经远超过 int 的取值范围了，如果用此数作为乘数，又返回 int 值，就会丢失数据信息</strong>。</p>
+</li>
+</ol>
+<p>关于散列表也就是 hash，还有一个非常重要的点，那就是要尽可能的让数据散列分布。只有这样才能减少hash 碰撞次数。</p>
+<h3 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h3><p>HashMap 最早出现在 JDK 1.2 中，底层基于散列算法实现。HashMap 允许 null 键和 null 值，在计算哈键的哈希值时，null 键哈希值为 0。HashMap 并不保证键值对的顺序，这意味着在进行某些操作后，键值对的顺序可能会发生变化。另外，需要注意的是，HashMap 是非线程安全类，在多线程环境下可能会存在问题。</p>
+<p>随着几代的优化更新到目前为止它的源码部分已经比较复杂，涉及的知识点也非常多，在 JDK 1.8 中包括：1、散列表实现、2、扰动函数、3、初始化容量、4、负载因子、5、扩容元素拆分、6、链表树化、7、红黑树、8、插入、9、查找、10、删除、11、遍历、12、分段锁等等。</p>
+<h5 id="简单散列存储"><a href="#简单散列存储" class="headerlink" title="简单散列存储"></a>简单散列存储</h5><p>将每一个字符串元素通过 Hash 计算索引位置，存放到数组中。</p>
+<p>黄色的索引 ID 是没有元素存放、绿色的索引 ID 存放了一个元素、红色的索引 ID 存放了两个元素。</p>
+<p><strong>问题</strong></p>
+<p>1、这里所有的元素存放都需要获取一个索引位置，而如果元素的位置不够散列碰撞严重，那么就失去了散列表存放的意义，没有达到预期的性能。</p>
+<p>2、在获取索引 ID 的计算公式中，需要数组长度是 2 的倍数，那么怎么进行初始化这个数组大小。</p>
+<p>3、数组越小碰撞的越大，数组越大碰撞的越小，时间与空间如何取舍。</p>
+<p>4、目前存放 7 个元素，已经有两个位置都存放了 2 个字符串，那么链表越来越长怎么优化。</p>
+<p>5、随着元素的不断添加，数组长度不足扩容时，怎么把原有的元素，拆分到新的位置上去。</p>
+<p>以上这些问题可以归纳为：扰动函数、初始化容量、负载因子、扩容方法以及链表和红黑树转换的使用。</p>
+<h5 id="扰动函数"><a href="#扰动函数" class="headerlink" title="扰动函数"></a>扰动函数</h5><p>在 HashMap 存放元素时候有这样一段代码来处理哈希值，这是 java 8 的散列值扰动函数，用于优化散列效果。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">hash</span><span class="params">(Object key)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> h;</span><br><span class="line">	<span class="keyword">return</span> (key == <span class="keyword">null</span>) ? <span class="number">0</span> : (h = key.hashCode()) ^ (h &gt;&gt;&gt; <span class="number">16</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>为什么使用</strong></p>
+<p>理论上来说字符串的 hashCode是一个 int 类型值，那可以直接作为数组下标了，且不会出现碰撞。但是这个 hashCode 的取值范围是[-2147483648, 2147483647]，有将近 40 亿的长度，谁也不能把数组初始化的这么大，内存也是放不下的。</p>
+<p>我们默认初始化的 Map 大小是 16 个长度 DEFAULT_INITIAL_CAPACITY = 1 &lt;&lt; 4，所以获取的 Hash 值并不能直接作为下标使用，需要与数组长度进行取模运算得到一个下标值。</p>
+<p>那么，hashMap 源码这里不只是直接获取哈希值，还进行了一次扰动计算，(h = key.hashCode()) ^ (h &gt;&gt;&gt; 16)。把哈希值右移 16 位，也就正好是自己长度的一半，之后与原哈希值做异或运算，这样就混合了原哈希值中的高位和低位，增大了<strong>随机性</strong>。</p>
+<p><strong>使用扰动函数就是为了增加随机性，让数据元素更加均衡的散列，减少碰撞。</strong></p>
+<h5 id="初始化容量"><a href="#初始化容量" class="headerlink" title="初始化容量"></a>初始化容量</h5><p> HashMap 默认的初始化大小里，散列数组需要一个 2 的倍数的长度。</p>
+<p>在初始化 HashMap 的时候，如果传一个 17 的值new HashMap&lt;&gt;(17)，它会怎么处理呢？</p>
+<p><strong>寻找2的倍数最小值</strong></p>
+<p>在 HashMap 的初始化中，有这样一段方法，</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">HashMap</span><span class="params">(<span class="keyword">int</span> initialCapacity, <span class="keyword">float</span> loadFactor)</span> </span>&#123;</span><br><span class="line">	...</span><br><span class="line">	<span class="keyword">this</span>.loadFactor = loadFactor;</span><br><span class="line">	<span class="keyword">this</span>.threshold = tableSizeFor(initialCapacity);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>阀值 threshold，通过方法 tableSizeFor 进行计算，是根据初始化来计算的。这个方法也就是要寻找比初始值大的，最小的那个 2 进制数值。比如传了 17，应该找到的是 32。</p>
+<h5 id="负载因子"><a href="#负载因子" class="headerlink" title="负载因子"></a>负载因子</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">float</span> DEFAULT_LOAD_FACTOR = <span class="number">0.75f</span>;</span><br></pre></td></tr></table></figure>
+
+<p>负载因子，可以理解成一辆车可承重重量超过某个阀值时，把货放到新的车上。那么在 HashMap 中，负载因子决定了数据量多少了以后进行扩容。</p>
+<p>这里要提到上面做的 HashMap 例子，我们准备了 7 个元素，但是最后还有 3 个位置空余，2 个位置存放了 2 个元素。 所以可能即使你数据比数组容量大时也是不一定能正正好好的把数组占满的，而是在某些小标位置出现了大量的碰撞，只能在同一个位置用链表存放，那么这样就失去了 Map 数组的性能。</p>
+<p>所以，要选择一个合理的大小下进行扩容，默认值 0.75 就是说当阀值容量占了3/4 时赶紧扩容，减少 Hash 碰撞。同时 0.75 是一个默认构造值，在创建 HashMap 也可以调整，比如你希望用更多的空间换取时间，可以把负载因子调的更小一些，减少碰撞。</p>
+<h5 id="HashMap数据插入整体流程"><a href="#HashMap数据插入整体流程" class="headerlink" title="HashMap数据插入整体流程"></a>HashMap数据插入整体流程</h5><p>1、首先进行哈希值的扰动，获取一个新的哈希值。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(key == <span class="keyword">null</span>) ? <span class="number">0</span> : (h = key.hashCode()) ^ (h &gt;&gt;&gt; <span class="number">16</span>);</span><br></pre></td></tr></table></figure>
+
+<p>2、判断 tab 是否位空或者长度为 0，如果是则进行扩容操作。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ((tab = table) == <span class="keyword">null</span> || (n = tab.length) == <span class="number">0</span>) n = (tab = resize()).length;</span><br></pre></td></tr></table></figure>
+
+<p>3、根据哈希值计算下标，如果对应小标正好没有存放数据，则直接插入即可，否则需要覆盖。</p>
+<p>4、判断 tab[i]是否为树节点，否则向链表中插入数据，是则向树中插入节点。</p>
+<p>5、如果链表中插入节点的时候，链表长度大于等于 8，则需要把链表转换为红黑树。</p>
+<p>6、最后所有元素处理完成后，判断是否超过阈值；threshold，超过则扩容。</p>
+<p>7、treeifyBin,是一个链表转树的方法，但不是所有的链表长度为 8 后都会。转成树，还 需 要 判 断 存 放 key 值 的 数 组 桶 长 度 是 否 小 于 64 MIN_TREEIFY_CAPACITY。如果小于则需要扩容，扩容后链表上的数据会被拆分散列的相应的桶节点上，也就把链表长度缩短了。</p>
+<h5 id="扩容机制"><a href="#扩容机制" class="headerlink" title="扩容机制"></a>扩容机制</h5><p>HashMap 是基于数组+链表和红黑树实现的，但用于存放 key 值得的数组桶的长度是固定的，由初始化决定。</p>
+<p>那么，随着数据的插入数量增加以及负载因子的作用下，就需要扩容来存放更多的数据。而扩容中有一个非常重要的点，就是 jdk1.8 中的优化操作，可以不需要再重新计算每一个元素的哈希值。</p>
+<p>1、扩容时计算出新的 newCap、newThr，这是两个单词的缩写，一个是 Capacity，另一个是阀 Threshold。</p>
+<p>2、newCap 用于创新的数组桶 new Node[newCap]。</p>
+<p>3、随着扩容后，原来那些因为哈希碰撞，存放成链表和红黑树的元素，都需要进行拆分存放到新的位置中。</p>
+<h5 id="链表树化"><a href="#链表树化" class="headerlink" title="链表树化"></a>链表树化</h5><p>HashMap 这种散列表的数据结构，最大的性能在于可以 O(1)时间复杂度定位到元素，但因为哈希碰撞不得已在一个下标里存放多组数据，那么 jdk1.8 之前的设计只是采用链表的方式进行存放，如果需要从链表中定位到数据时间复杂度就是O(n)，链表越长性能越差。因此在 jdk1.8 中把过长的链表也就是 8 个，优化为自平衡的红黑树结构，以此让定位元素的时间复杂度优化近似于 O(logn)，这样来提升元素查找的效率。但也不是完全抛弃链表，因为在元素相对不多的情况下，链表的插入速度更快，所以综合考虑下设定阈值为 8 才进行红黑树转换操作。</p>
+<p>1、链表树化的条件有两点：链表长度大于等于 8、桶容量大于 64，否则只是扩容，不会树化。</p>
+<p>2、链表树化的过程中是先由链表转换为树节点，此时的树可能不是一颗平衡树。同时在树转换过程中会记录链表的顺序，tl.next = p，这主要方便后续树转链表和拆分更方便。</p>
+<p>3、链表转换成树完成后，在进行红黑树的转换。先简单介绍下，红黑树的转换需要染色和旋转，以及比对大小。在比较元素的大小中，有一个比较有意思的方法，tieBreakOrder 加时赛，这主要是因为 HashMap 没有像 TreeMap 那样本身就有 Comparator 的实现。</p>
+<h5 id="红黑树转链"><a href="#红黑树转链" class="headerlink" title="红黑树转链"></a>红黑树转链</h5><p>在转换树的过程中，记录了原有链表的顺序。那么，这就简单了，红黑树转链表时候，直接把 TreeNode 转换为 Node 即可。</p>
+
+    </div>
+    
+    <div class="reward" ontouchstart>
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+            <span class="reward-type">
+                <img class="wechat" src="/img/wechat.jpg"><b>微信打赏</b>
+            </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">
+        谢谢~
+    </p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+    <a href="/2021/09/20/java3/" class="next-post btn btn-default" title='Java线程池'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            Java线程池</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#HashCode"><span class="toc-text">HashCode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HashMap"><span class="toc-text">HashMap</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E6%95%A3%E5%88%97%E5%AD%98%E5%82%A8"><span class="toc-text">简单散列存储</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%89%B0%E5%8A%A8%E5%87%BD%E6%95%B0"><span class="toc-text">扰动函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E5%AE%B9%E9%87%8F"><span class="toc-text">初始化容量</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%B4%9F%E8%BD%BD%E5%9B%A0%E5%AD%90"><span class="toc-text">负载因子</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#HashMap%E6%95%B0%E6%8D%AE%E6%8F%92%E5%85%A5%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B"><span class="toc-text">HashMap数据插入整体流程</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%89%A9%E5%AE%B9%E6%9C%BA%E5%88%B6"><span class="toc-text">扩容机制</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E6%A0%91%E5%8C%96"><span class="toc-text">链表树化</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BA%A2%E9%BB%91%E6%A0%91%E8%BD%AC%E9%93%BE"><span class="toc-text">红黑树转链</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2021
+                    <img src="/img/icp.png"><a href="//beian.miit.gov.cn/" target="_blank" rel="nofollow">
+                        桂ICP备20004986号</a>
+                    
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>
