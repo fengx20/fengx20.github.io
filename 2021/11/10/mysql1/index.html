@@ -1,0 +1,447 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Fengx">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://example.com">
+    <!--SEO-->
+
+<meta name="keywords" content="MySQL" />
+
+
+<meta name="description" content="关系型数据库介绍顾名思义，关系型数据库就是一种建立在关系模型的基础上的数据库。关系模型表明了数据库中所存储的数据之间的联系（一对一、一对多、多对多）。
+关系型数据库中，我们的数据都被存放在了各种..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    MySQL复习记录（一） |
+    
+    Fengx
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Fengx" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/banner2.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Fengx'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <h2>
+                戒骄戒躁
+            </h2>
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://example.com">
+                        Fengx</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa fa-home"></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/知识体系/"><i class="fa fa-book"></i>
+                                知识体系</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/网络/"><i class="fa fa-book"></i>
+                                网络</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/操作系统/"><i class="fa fa-book"></i>
+                                操作系统</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/数据结构与算法/"><i class="fa fa-book"></i>
+                                数据结构与算法</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/设计模式/"><i class="fa fa-book"></i>
+                                设计模式</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/Java/"><i class="fa fa-code"></i>
+                                Java</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/Go/"><i class="fa fa-code"></i>
+                                Go</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/数据库/"><i class="fa fa-table"></i>
+                                数据库</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/开发框架/"><i class="fa fa-code"></i>
+                                开发框架</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/中间件/"><i class="fa fa-code"></i>
+                                中间件</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/分布式架构/"><i class="fa fa-book"></i>
+                                分布式架构</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/云原生/"><i class="fa fa-book"></i>
+                                云原生</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa fa-history"></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="MySQL复习记录（一）">
+            
+            MySQL复习记录（一）
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-none-link" href="/tags/MySQL/" rel="tag">MySQL</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2021/11/10</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h3 id="关系型数据库介绍"><a href="#关系型数据库介绍" class="headerlink" title="关系型数据库介绍"></a>关系型数据库介绍</h3><p>顾名思义，关系型数据库就是一种建立在关系模型的基础上的数据库。关系模型表明了数据库中所存储的数据之间的联系（一对一、一对多、多对多）。</p>
+<p>关系型数据库中，我们的数据都被存放在了各种表中（比如用户表），表中的每一行就存放着一条数据（比如一个用户的信息）。</p>
+<p><img src="https://guide-blog-images.oss-cn-shenzhen.aliyuncs.com/java-guide-blog/5e3c1a71724a38245aa43b02_99bf70d46cc247be878de9d3a88f0c44.png" alt="img"></p>
+<p>大部分关系型数据库都使用 SQL 来操作数据库中的数据。并且，大部分关系型数据库都支持事务的四大特性(ACID)。</p>
+<h3 id="有哪些常见的关系型数据库呢？"><a href="#有哪些常见的关系型数据库呢？" class="headerlink" title="有哪些常见的关系型数据库呢？"></a>有哪些常见的关系型数据库呢？</h3><p>MySQL、PostgreSQL、Oracle、SQL Server、SQLite（微信本地的聊天记录的存储就是用的 SQLite） ……。</p>
+<h3 id="MySQL-介绍"><a href="#MySQL-介绍" class="headerlink" title="MySQL 介绍"></a>MySQL 介绍</h3><p><img src="https://img-blog.csdnimg.cn/20210327143351823.png" alt="img"></p>
+<p><strong>MySQL 是一种关系型数据库，主要用于持久化存储我们的系统中的一些数据比如用户信息。</strong></p>
+<p>由于 MySQL 是开源免费并且比较成熟的数据库，因此，MySQL 被大量使用在各种系统中。任何人都可以在 GPL(General Public License) 的许可下下载并根据个性化的需要对其进行修改。MySQL 的默认端口号是<strong>3306</strong>。</p>
+<h4 id="存储引擎"><a href="#存储引擎" class="headerlink" title="存储引擎"></a>存储引擎</h4><p><strong>存储引擎相关的命令</strong></p>
+<p><strong>查看 MySQL 提供的所有存储引擎</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">show</span> engines;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-6/mysql-engines.png" alt="查看MySQL提供的所有存储引擎"></p>
+<p>从上图我们可以查看出 MySQL 当前默认的存储引擎是 InnoDB，并且在 5.7 版本所有的存储引擎中只有 InnoDB 是事务性存储引擎，也就是说只有 InnoDB 支持事务。</p>
+<p><strong>查看 MySQL 当前默认的存储引擎</strong></p>
+<p>我们也可以通过下面的命令查看默认的存储引擎。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">show</span> variables <span class="keyword">like</span> <span class="string">&#x27;%storage_engine%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>查看表的存储引擎</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">table</span> status <span class="keyword">like</span> &quot;table_name&quot; ;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-6/%E6%9F%A5%E7%9C%8B%E8%A1%A8%E7%9A%84%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E.png" alt="查看表的存储引擎"></p>
+<p><strong>MyISAM 和 InnoDB 的区别</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/20210327145248960.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0MzM3Mjcy,size_16,color_FFFFFF,t_70" alt="img"></p>
+<p>MySQL 5.5 之前，MyISAM 引擎是 MySQL 的默认存储引擎，可谓是风光一时。</p>
+<p>虽然，MyISAM 的性能还行，各种特性也还不错（比如全文索引、压缩、空间函数等）。但是，MyISAM 不支持事务和行级锁，而且最大的缺陷就是崩溃后无法安全恢复。</p>
+<p>5.5 版本之后，MySQL 引入了 InnoDB（事务性数据库引擎），MySQL 5.5 版本后默认的存储引擎为 InnoDB。</p>
+<p><strong>1.是否支持行级锁</strong></p>
+<p>MyISAM 只有表级锁(table-level locking)，而 InnoDB 支持行级锁(row-level locking)和表级锁,默认为行级锁。</p>
+<p>也就说，<strong>MyISAM 一锁就是锁住了整张表</strong>，这在并发写的情况下是多么滴憨憨啊！这也是为什么 InnoDB 在并发写的时候，性能更牛皮了！</p>
+<p><strong>2.是否支持事务</strong></p>
+<p>MyISAM 不提供事务支持。</p>
+<p>InnoDB 提供事务支持，具有提交(commit)和回滚(rollback)事务的能力。</p>
+<p><strong>3.是否支持外键</strong></p>
+<p>MyISAM 不支持，而 InnoDB 支持。</p>
+<p>拓展一下：</p>
+<p>一般我们也是不建议在数据库层面使用外键的，应用层面可以解决。不过，这样会对数据的一致性造成威胁。具体要不要使用外键还是要根据你的项目来决定。</p>
+<p><strong>4.是否支持数据库异常崩溃后的安全恢复</strong></p>
+<p>MyISAM 不支持，而 InnoDB 支持。</p>
+<p>使用 InnoDB 的数据库在异常崩溃后，数据库重新启动的时候会保证数据库恢复到崩溃前的状态。这个恢复的过程依赖于 <code>redo log</code> 。</p>
+<p>拓展一下：</p>
+<ul>
+<li>MySQL InnoDB 引擎使用 <strong>redo log(重做日志)</strong> 保证事务的<strong>持久性</strong>，使用 <strong>undo log(回滚日志)</strong> 来保证事务的<strong>原子性</strong>。</li>
+<li>MySQL InnoDB 引擎通过 <strong>锁机制</strong>、<strong>MVCC</strong> 等手段来保证事务的隔离性（ 默认支持的隔离级别是 <strong><code>REPEATABLE-READ</code></strong> ）。</li>
+<li>保证了事务的持久性、原子性、隔离性之后，一致性才能得到保障。</li>
+</ul>
+<p><strong>5.是否支持 MVCC</strong></p>
+<p>MyISAM 不支持，而 InnoDB 支持。</p>
+<p>MVCC 可以看作是行级锁的一个升级，可以有效减少加锁操作，提高性能。</p>
+<h4 id="常用数据类型"><a href="#常用数据类型" class="headerlink" title="常用数据类型"></a>常用数据类型</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">INT</span>	 整型 <span class="number">4</span>字节整数类型，范围约<span class="operator">+</span><span class="operator">/</span><span class="number">-21</span>亿</span><br><span class="line"><span class="type">BIGINT</span>	长整型 <span class="number">8</span>字节整数类型，范围约<span class="operator">+</span><span class="operator">/</span><span class="number">-922</span>亿亿</span><br><span class="line"><span class="keyword">DOUBLE</span>	浮点型 <span class="number">8</span>字节浮点数，范围约<span class="operator">+</span><span class="operator">/</span><span class="number">-10308</span></span><br><span class="line"><span class="type">DECIMAL</span>(M,N)  高精度小数 由用户指定精度的小数，例如，<span class="type">DECIMAL</span>(<span class="number">20</span>,<span class="number">10</span>)表示一共<span class="number">20</span>位，其中小数<span class="number">10</span>位，通常用于财务计算</span><br><span class="line"><span class="type">CHAR</span>(N)  定长字符串 存储指定长度的字符串，例如，<span class="type">CHAR</span>(<span class="number">100</span>)总是存储<span class="number">100</span>个字符的字符串</span><br><span class="line"><span class="type">VARCHAR</span>(N)  变长字符串 存储可变长度的字符串，例如，<span class="type">VARCHAR</span>(<span class="number">100</span>)可以存储<span class="number">0</span><span class="operator">~</span><span class="number">100</span>个字符的字符串</span><br><span class="line"><span class="type">BOOLEAN</span>  布尔类型 存储<span class="literal">True</span>或者<span class="literal">False</span></span><br><span class="line"><span class="type">DATE</span>  日期类型 存储日期，例如，<span class="number">2018</span><span class="number">-06</span><span class="number">-22</span></span><br><span class="line"><span class="type">TIME</span>  时间类型 存储时间，例如，<span class="number">12</span>:<span class="number">20</span>:<span class="number">59</span></span><br><span class="line">DATETIME  日期和时间类型 存储日期<span class="operator">+</span>时间，例如，<span class="number">2018</span><span class="number">-06</span><span class="number">-22</span> <span class="number">12</span>:<span class="number">20</span>:<span class="number">59</span></span><br></pre></td></tr></table></figure>
+
+<p>通常来说，BIGINT能满足整数存储的需求，VARCHAR(N)能满足字符串存储的需求，这两种类型是使用最广泛的。</p>
+<h4 id="行记录和列字段"><a href="#行记录和列字段" class="headerlink" title="行记录和列字段"></a>行记录和列字段</h4><p>在关系数据库中，一张表中的每一行数据被称为一条记录。一条记录就是由多个列字段组成的。</p>
+<p><strong>主键</strong></p>
+<p>能够通过某个字段唯一区分出不同的记录，这个字段被称为主键。</p>
+<p><strong>主键的要求</strong></p>
+<ul>
+<li>主键最好不要修改</li>
+<li>主键也不应该允许NULL</li>
+</ul>
+<p><strong>选取主键</strong></p>
+<p>不使用任何业务相关的字段作为主键。</p>
+<blockquote>
+<p>注：身份证号、手机号、邮箱地址看上去可以唯一的字段，均不可用作主键，可以建唯一索引。</p>
+</blockquote>
+<p><strong>id</strong></p>
+<p>作为主键最好是完全业务无关的字段，我们一般把这个字段命名为id</p>
+<p><strong>常见可作为id字段的类型</strong></p>
+<p><strong>自增整数类型</strong></p>
+<p>数据库会在插入数据时自动为每一条记录分配一个自增整数，这样我们就完全不用担心主键重复，也不用自己预先生成主键。</p>
+<p><strong>全局唯一GUID类型</strong></p>
+<p>使用一种全局唯一的字符串作为主键，类似8f55d96b-8acc-4636-8cb8-76bf8abc2f57。GUID算法通过网卡MAC地址、时间戳和随机数保证任意计算机在任意时间生成的字符串都是不同的，大部分编程语言都内置了GUID算法，可以自己预算出主键。</p>
+<p><strong>建议</strong></p>
+<ul>
+<li>对于大部分应用来说，通常自增类型的主键就能满足需求。</li>
+<li>id数据类型一般使用BIGINT，如果使用INT自增类型，当一张表的记录数超过2147483647（约21亿）时，会达到上限而出错，使用BIGINT自增类型则可以最多约922亿条记录。</li>
+</ul>
+<p><strong>联合主键</strong></p>
+<p>关系数据库实际上还允许通过多个字段唯一标识记录，即两个或更多的字段都设置为主键，这种主键被称为联合主键。</p>
+<p><strong>建议</strong></p>
+<blockquote>
+<p>没有必要的情况下，我们尽量不使用联合主键，因为它给关系表带来了复杂度的上升。</p>
+</blockquote>
+<p><strong>外键</strong></p>
+<p>在students表中，通过class_id的字段，可以把数据与另一张表classes关联起来，这种列称为外键。</p>
+<p><strong>理解</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> students</span><br><span class="line"><span class="keyword">ADD</span> <span class="keyword">CONSTRAINT</span> fk_class_id</span><br><span class="line"><span class="keyword">FOREIGN</span> KEY (class_id)</span><br><span class="line"><span class="keyword">REFERENCES</span> classes (id);</span><br></pre></td></tr></table></figure>
+
+<p>外键约束的名称fk_class_id可以任意，FOREIGN KEY (class_id)指定了class_id作为外键，REFERENCES classes (id)指定了这个外键将关联到classes表的id列（即classes表的主键）。</p>
+<p><strong>建议</strong></p>
+<blockquote>
+<p>由于外键约束会降低数据库的性能，大部分互联网应用程序为了追求速度，并不设置外键约束，而是仅靠应用程序自身来保证逻辑的正确性。</p>
+</blockquote>
+<p><strong>拆表</strong></p>
+<p><strong>把一个大表拆成两个一对一的表，目的是把经常读取和不经常读取的字段分开，以获得更高的性能。例如，把一个大的用户表分拆为用户基本信息表user_info和用户详细信息表user_profiles，大部分时候，只需要查询user_info表，并不需要查询user_profiles表，这样就提高了查询速度。</strong></p>
+<p><strong>查询缓存</strong></p>
+<p>执行查询语句的时候，会先查询缓存。不过，MySQL 8.0 版本后移除，因为这个功能不太实用</p>
+<p><code>my.cnf</code> 加入以下配置，重启 MySQL 开启查询缓存</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">query_cache_type</span>=<span class="string">1</span></span><br><span class="line"><span class="attr">query_cache_size</span>=<span class="string">600000</span></span><br></pre></td></tr></table></figure>
+
+<p>MySQL 执行以下命令也可以开启查询缓存</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">set</span> <span class="string">global  query_cache_type=1;</span></span><br><span class="line"><span class="attr">set</span> <span class="string">global  query_cache_size=600000;</span></span><br></pre></td></tr></table></figure>
+
+<p>如上，<strong>开启查询缓存后在同样的查询条件以及数据情况下，会直接在缓存中返回结果</strong>。</p>
+<p><strong>缓存虽然能够提升数据库的查询性能，但是缓存同时也带来了额外的开销，每次查询后都要做一次缓存操作，失效后还要销毁。</strong><br>因此，开启查询缓存要谨慎，尤其对于写密集的应用来说更是如此。<br>如果开启，要注意合理控制缓存空间大小，一般来说其大小设置为几十 MB 比较合适。<br>此外，<strong>还可以通过 sql_cache 和 sql_no_cache 来控制某个查询语句是否需要缓存：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> sql_no_cache <span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">from</span> usr;</span><br></pre></td></tr></table></figure>
+<h3 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h3><blockquote>
+<p>SQL是结构化查询语言的缩写，用来访问和操作数据库系统。SQL语句既可以查询数据库中的数据，也可以添加、更新和删除数据库中的数据，还可以对数据库进行管理和维护操作。</p>
+</blockquote>
+<p><strong>数据库操作</strong></p>
+<p><strong>DDL(Data Definition Language)</strong></p>
+<p>DDL允许用户定义数据，也就是创建表、删除表、修改表结构这些操作。通常，DDL由数据库管理员执行。</p>
+<p><strong>DML(Data Manipulation Language)</strong></p>
+<p>DML为用户提供添加、删除、更新数据的能力，这些是应用程序对数据库的日常操作。</p>
+<p><strong>DQL(Data Query Language)</strong></p>
+<p>DQL允许用户查询数据，这也是通常最频繁的数据库日常操作。</p>
+<blockquote>
+<p>SQL看SQL备忘录</p>
+</blockquote>
+
+    </div>
+    
+    <div class="reward" ontouchstart>
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+            <span class="reward-type">
+                <img class="wechat" src="/img/wechat.jpg"><b>微信打赏</b>
+            </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">
+        谢谢~
+    </p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Fengx</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2021/11/30/mysql2/" class="pre-post btn btn-default" title='MySQL复习记录（二）'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            MySQL复习记录（二）</span>
+    </a>
+    
+    
+    <a href="/2021/10/09/java4/" class="next-post btn btn-default" title='HashMap底层实现整理'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            HashMap底层实现整理</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BB%8B%E7%BB%8D"><span class="toc-text">关系型数据库介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E5%93%AA%E4%BA%9B%E5%B8%B8%E8%A7%81%E7%9A%84%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E5%91%A2%EF%BC%9F"><span class="toc-text">有哪些常见的关系型数据库呢？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MySQL-%E4%BB%8B%E7%BB%8D"><span class="toc-text">MySQL 介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E"><span class="toc-text">存储引擎</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">常用数据类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A1%8C%E8%AE%B0%E5%BD%95%E5%92%8C%E5%88%97%E5%AD%97%E6%AE%B5"><span class="toc-text">行记录和列字段</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SQL"><span class="toc-text">SQL</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2021
+                    <img src="/img/icp.png"><a href="//beian.miit.gov.cn/" target="_blank" rel="nofollow">
+                        桂ICP备20004986号</a>
+                    
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>
